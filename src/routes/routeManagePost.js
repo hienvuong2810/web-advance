@@ -3,7 +3,7 @@ const app = express.Router()
 const Post = require("../db/PostSchema")
 const multer = require('multer');
 const Posts = require("../db/PostSchema");
-
+const getDate = require("../../utils/date")
 let storage = multer.diskStorage({
     destination: (req, file, callback) => {
       callback(null, "./images");
@@ -22,13 +22,13 @@ app.post("/createPost",async (req, res)=> {
         arrImage.push(element.filename)
     });
     //if author is student
-    if(req.user.role == 1){
+    if(req.user.role == 0){
         Posts.create({
             author : req.user._id,
             content: content,
-            createAt: getDate(),
+            createAt: getDate,
             files: arrImage,
-            department: "fsa",
+            department: "",
             comment:  []
         }, function(err, docs){
             if (err){
@@ -50,7 +50,7 @@ app.post("/updatePost", (req, res)=>{
         arrImage.push(element.filename)
     });
     //if author is student
-    if(req.user.role == 1){
+    if(req.user.role == 0){
         Posts.findOneAndUpdate(
         {
             author : req.user._id
@@ -58,7 +58,7 @@ app.post("/updatePost", (req, res)=>{
         {
             author : req.user._id,
             content: content,
-            createAt: getDate(),
+            createAt: getDate,
             files: arrImage,
             department: undefined,
             comment:  []
@@ -99,9 +99,11 @@ app.post("/deletePost", (req, res)=>{
     )
 })
 
-function getDate(){
 
-    return new Date().toLocaleString()
-}
+app.get("/getPost",async (req, res)=>{
+    let result =  await Post.find({}).populate("author").populate("comment")
+    return res.status(200).json({code: 200, msg: result})
+})
+
 
 module.exports  = app

@@ -24,8 +24,10 @@ const auth = require("./utils/auth")
 const routeLogin = require("./src/routes/routeLogin")
 const routeManageAccount = require("./src/routes/routeManageAccounts")
 const routeManagePost = require("./src/routes/routeManagePost")
+const routeComment = require("./src/routes/routeManageComment")
 
 app.use("/manage", auth, routeManageAccount)
+app.use("/comment", routeComment)
 app.use("/post", routeManagePost)
 app.use("/", routeLogin)
 
