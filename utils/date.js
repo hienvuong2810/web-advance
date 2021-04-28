@@ -1,5 +1,10 @@
+const moment = require('moment-timezone');
+
 function getDate(){
-    return Date.now()
+    const dateVietnam = moment.tz(Date.now(), "Asia/Saigon");
+
+    return dateVietnam;
+
 }
 
 module.exports = getDate()

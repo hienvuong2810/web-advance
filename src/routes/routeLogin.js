@@ -9,7 +9,7 @@ app.get("/login", (req, res)=>{
     res.send('page login!'.concat(x))
 })
 
-
+//button login google 
 app.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }))
 
 app.get('/google/callback', passport.authenticate('google', { failureRedirect: '/login', failureFlash: true}),
