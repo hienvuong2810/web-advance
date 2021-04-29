@@ -18,6 +18,16 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
+io.on('connection', function (socket) {
+    console.log(socket.id + "connected");
+
+});
+app.set('socketio', io);
+app.set("view engine", "ejs");
+app.set("views", "./views");
 
 
 const auth = require("./utils/auth")
@@ -25,14 +35,16 @@ const routeLogin = require("./src/routes/routeLogin")
 const routeManageAccount = require("./src/routes/routeManageAccounts")
 const routeManagePost = require("./src/routes/routeManagePost")
 const routeComment = require("./src/routes/routeManageComment")
-
+const routeNotification = require("./src/routes/routeManageNotification")
 app.use("/manage", auth, routeManageAccount)
 app.use("/comment", routeComment)
 app.use("/post", routeManagePost)
+app.use("/notification",routeNotification)
 app.use("/", routeLogin)
 
-
-
+app.get("/test", (req, res)=>{
+    res.render("test")
+})
 app.get('/dashboard', auth, (req, res) => res.send(`Welcome mr ${req.user.name}!`))
 
 
@@ -45,6 +57,6 @@ mongoose.connect('mongodb://localhost:27017/Web', {
 
 
 
-app.listen(3000, (req, res)=>{
+http.listen(3000, (req, res)=>{
     console.log("Running http://localhost:3000")
 })

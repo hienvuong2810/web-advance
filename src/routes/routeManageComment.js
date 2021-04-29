@@ -32,8 +32,11 @@ app.post("/add", (req, res)=>{
 
 app.post("/update", (req, res)=>{
     const {commentId, contentUpdate} = req.body
-    Comment.findByIdAndUpdate(
-        commentId,
+    Comment.findOneAndUpdate(
+        {
+            _id: commentId,
+            author: req.user._id
+        },
         {
             content: contentUpdate
         }, function(err, docs){
@@ -49,9 +52,10 @@ app.post("/update", (req, res)=>{
 app.post("/delete", (req, res)=>{
     const {commentId} = req.body
 
-    Comment.findByIdAndDelete(
+    Comment.findOneAndDelete(
         {
-            commentId
+            _id: commentId,
+            author: req.user._id
         },
         function(err, docs){
             if(err){

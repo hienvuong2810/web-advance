@@ -99,11 +99,19 @@ app.post("/deletePost", (req, res)=>{
     )
 })
 
-
-app.get("/getPost",async (req, res)=>{
-    let result =  await Post.find({}).populate("author").populate("comment")
+//get post with page, default limit = 10
+app.get("/getPost/:page",async (req, res)=>{
+    const {page = 1, limit = 10} = req.params
+    let result =  await Post.find({}).limit(limit * 1).skip((page - 1) * limit).populate("author").populate("comment")
     return res.status(200).json({code: 200, msg: result})
 })
 
+//get post of specific user
+//id => id of user
+app.get("/all/:id/:page", async (req, res)=>{
+    const {id ,page = 1, limit = 10} = req.params
+    let result =  await Post.find({_id: id}).limit(limit * 1).skip((page - 1) * limit).populate("author").populate("comment")
+    return res.status(200).json({code: 200, msg: result})
+})
 
 module.exports  = app
