@@ -6,7 +6,8 @@ require("../../utils/configPassport")
 
 app.get("/login", (req, res)=>{
     let x = req.flash('error')
-    res.send('page login!'.concat(x))
+    // res.send('page login!'.concat(x))
+    res.render('login')
 })
 
 //button login google 

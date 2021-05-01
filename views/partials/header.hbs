@@ -1,0 +1,46 @@
+<nav id="navbar-side" class="navbar-side fixed-top ">
+
+    <div class="navbar-side__title-menu text-center position-relative">
+        <span class="p-0 m-0">Thông báo</span>
+        <div id="btn-hide-navbar">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+
+    <div class="navbar-side__auth d-flex justify-content-between ">
+        <img src="{{user.avatar}}" alt="avatar-user" class="auth__avatar rounded-circle">
+        <span class="auth__name">{{user.displayName}}</span>
+        <div class="auth__btn-logout" title="Logout">
+            <i class="fas fa-sign-out-alt"></i>
+        </div>
+    </div>
+
+    <div class="navbar-side__select">
+        <ul class="p-0 m-0">
+            <li class="p-2 active">
+                <i class="fas fa-home" title="Trang chủ"></i>
+                <span class="mx-2">
+                    Trang chủ
+                </span>
+            </li>
+            <li class="p-2">
+                <i class="fas fa-globe-asia" title="Tất cả thông báo"></i>
+                <span class="mx-2">
+                    Tất cả thông báo
+                </span>
+            </li>
+            <li class="p-2">
+                <i class="fas fa-images" title="Chủ đề"></i>
+                <span class="mx-2">
+                    Theo chủ đề
+                </span>
+            </li>
+            <li class="p-2">
+                <i class="fas fa-users" title="Phòng ban"></i>
+                <span class="mx-2">
+                    Theo phòng ban
+                </span>
+            </li>
+        </ul>
+    </div>
+</nav>

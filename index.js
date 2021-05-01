@@ -5,13 +5,14 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const cookieSession = require('cookie-session')
 const flash = require('connect-flash');
 const app = express()
+const hbs = require('express-handlebars')
 app.use(cookieSession({  
     //maxAge: 24*60*60*1000,
     name: 'session',
     keys: ['key1', 'key2']
   }))
 app.use("/images", express.static(__dirname + '/images'));
-app.use("/views", express.static(__dirname + '/views'));
+app.use("/public", express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(passport.initialize());
@@ -26,8 +27,11 @@ io.on('connection', function (socket) {
 
 });
 app.set('socketio', io);
-app.set("view engine", "ejs");
-app.set("views", "./views");
+// app.set("view engine", "ejs");
+// app.set("views", "./views");
+
+app.engine('hbs', hbs({extname: 'hbs'}))
+app.set('view engine', 'hbs');
 
 
 const auth = require("./utils/auth")
@@ -45,7 +49,9 @@ app.use("/", routeLogin)
 app.get("/test", (req, res)=>{
     res.render("test")
 })
-app.get('/dashboard', auth, (req, res) => res.send(`Welcome mr ${req.user.name}!`))
+app.get('/dashboard', auth, (req, res) => {
+    res.render('dashboard', {user: req.user});
+})
 
 
 mongoose.connect('mongodb://localhost:27017/Web', {
