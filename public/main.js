@@ -83,107 +83,114 @@ $(document).ready(() => {
    }
 
    function updatePost(){
-    //  $('#news-feed').empty();
-     const postDiv = $(`
-     <div class="post my-2 rounded shadow-lg">
-     <div class="post__header pt-2 px-3 d-flex justify-content-between">
-         <div class="header__auth d-flex">
-             <img src="{{user.avatar}}" alt="avatar" class="rounded-circle">
-             <div class="d-flex flex-column px-2 py-1">
-                 <span class="auth__name">{{user.displayName}}</span>
-                 <span class="auth__date">December 23, 2021</span>
-             </div>
-         </div>
-         <div class="header__option">
-             <button class="rounded-circle">
-                 <i class="fas fa-ellipsis-h"></i>
-             </button>
-         </div>
-     </div>
-     <div class="post__content">
-         <div class="content__text py-2 px-3">
-             <span>
-                 Test trạng thái
-             </span>
-         </div>
-         <div class="content__img">
-             <img src="https://images.pexels.com/photos/132037/pexels-photo-132037.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
-                 alt="img">
-         </div>
-     </div>
-     <div class="post__react px-3">
-         <div class="react__action">
-             <div class="quantity py-2 d-flex justify-content-between">
-                 <div class="like">
-                     <i class="far fa-thumbs-up"></i>
-                     <span class="mx-2">11</span>
-                 </div>
-                 <div class="comment">
-                     <span class="">11 comments</span>
-                 </div>
-             </div>
-             <div class="react border-bottom border-top d-flex justify-content-center">
-                 <button>
-                     <i class="far fa-thumbs-up"></i>
-                     <span class="mx-2">Like</span>
-                 </button>
-                 <button>
-                     <i class="far fa-comment-alt"></i>
-                     <span class="mx-2">Comment</span>
-                 </button>
-             </div>
-             <div class="comments d-flex flex-column">
-                 <div class="user-comment d-inline-flex py-2">
-                     <img src="{{user.avatar}}" alt="avatar" class="rounded-circle">
-                     <div class="message ml-2 px-2 py-1 rounded">
-                         <span class="user-comment__name">
-                             {{user.displayName}}
-                         </span>
-                         <br />
-                         <span>
-                             Lorem ipsum dolor sit amet consectetur adipisicing elit. A, fugiat
-                             impedit? Dignissimos esse impedit voluptates minus odio fuga,
-                             explicabo blanditiis ullam eaque quo perspiciatis! Voluptas
-                             voluptatem soluta iste, laudantium impedit aut reprehenderit
-                             excepturi nihil! Nostrum numquam reprehenderit nulla blanditiis amet
-                             recusandae incidunt ut fuga. Ab esse laborum inventore iure
-                             suscipit. Possimus recusandae non rem perferendis magni minima ex
-                             totam deleniti nostrum mollitia amet tempora, accusamus eveniet
-                             labore dicta beatae numquam reiciendis quasi fugiat incidunt debitis
-                             harum repudiandae at? Suscipit accusantium voluptate laudantium sunt
-                             explicabo vitae nesciunt architecto maxime officia perferendis.
-                             Eligendi commodi asperiores aliquid in fuga reprehenderit molestias
-                             quis. Eligendi!
-                         </span>
-                     </div>
-                     <div class="option">
-                         <button class="rounded-circle mx-2">
-                             <i class="fas fa-ellipsis-h"></i>
-                         </button>
-                     </div>
-                 </div>
-                 <div class="user-comment d-inline-flex py-2">
-                     <img src="{{user.avatar}}" alt="avatar" class="rounded-circle">
-                     <div class="message ml-2 px-2 py-1 rounded">
-                         <span class="user-comment__name">
-                             {{user.displayName}}
-                         </span>
-                         <br />
-                         <span>
-                             This is test message
-                         </span>
-                     </div>
-                     <div class="option">
-                         <button class="rounded-circle mx-2">
-                             <i class="fas fa-ellipsis-h"></i>
-                         </button>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </div>
- </div>
-     `)
+     $('#news-feed').empty();
+     allPosts.forEach(post => {
+        const postDiv = $(`
+        <div class="post my-2 rounded shadow-lg">
+        <div class="post__header pt-2 px-3 d-flex justify-content-between">
+            <div class="header__auth d-flex">
+                <img src="{{user.avatar}}" alt="avatar" class="rounded-circle">
+                <div class="d-flex flex-column px-2 py-1">
+                    <span class="auth__name">{{user.displayName}}</span>
+                    <span class="auth__date">December 23, 2021</span>
+                </div>
+            </div>
+            <div class="header__option">
+                <button class="rounded-circle">
+                    <i class="fas fa-ellipsis-h"></i>
+                </button>
+            </div>
+        </div>
+        <div class="post__content">
+            <div class="content__text py-2 px-3">
+                <span>
+                    Test trạng thái
+                </span>
+            </div>
+            <div class="content__img">
+                <img src="https://images.pexels.com/photos/132037/pexels-photo-132037.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+                    alt="img">
+            </div>
+        </div>
+        <div class="post__react px-3">
+            <div class="react__action">
+                <div class="quantity py-2 d-flex justify-content-between">
+                    <div class="like">
+                        <i class="far fa-thumbs-up"></i>
+                        <span class="mx-2">11</span>
+                    </div>
+                    <div class="comment">
+                        <span class="">11 comments</span>
+                    </div>
+                </div>
+                <div class="react border-bottom border-top d-flex justify-content-center">
+                    <button>
+                        <i class="far fa-thumbs-up"></i>
+                        <span class="mx-2">Like</span>
+                    </button>
+                    <button>
+                        <i class="far fa-comment-alt"></i>
+                        <span class="mx-2">Comment</span>
+                    </button>
+                </div>
+                <div class="comments-post d-flex flex-column">
+                    <div class="user-comment d-inline-flex py-2">
+                        <img src="{{user.avatar}}" alt="avatar" class="rounded-circle">
+                        <div class="message ml-2 px-2 py-1 rounded">
+                            <span class="user-comment__name">
+                                {{user.displayName}}
+                            </span>
+                            <br />
+                            <span>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. A, fugiat
+                                impedit? Dignissimos esse impedit voluptates minus odio fuga,
+                                explicabo blanditiis ullam eaque quo perspiciatis! Voluptas
+                                voluptatem soluta iste, laudantium impedit aut reprehenderit
+                                excepturi nihil! Nostrum numquam reprehenderit nulla blanditiis amet
+                                recusandae incidunt ut fuga. Ab esse laborum inventore iure
+                                suscipit. Possimus recusandae non rem perferendis magni minima ex
+                                totam deleniti nostrum mollitia amet tempora, accusamus eveniet
+                                labore dicta beatae numquam reiciendis quasi fugiat incidunt debitis
+                                harum repudiandae at? Suscipit accusantium voluptate laudantium sunt
+                                explicabo vitae nesciunt architecto maxime officia perferendis.
+                                Eligendi commodi asperiores aliquid in fuga reprehenderit molestias
+                                quis. Eligendi!
+                            </span>
+                        </div>
+                        <div class="option">
+                            <button class="rounded-circle mx-2">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="user-comment d-inline-flex py-2">
+                        <img src="{{user.avatar}}" alt="avatar" class="rounded-circle">
+                        <div class="message ml-2 px-2 py-1 rounded">
+                            <span class="user-comment__name">
+                                {{user.displayName}}
+                            </span>
+                            <br />
+                            <span>
+                                This is test message
+                            </span>
+                        </div>
+                        <div class="option">
+                            <button class="rounded-circle mx-2">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="comment d-flex">
+                    <input type="text" placeholder="Write a public comment"
+                        class="w-100 border m-3 p-2 rounded">
+                </div>
+            </div>
+        </div>
+    </div>
+        `)
+     })
+     
    }
     
    function notifySuccess(msg){

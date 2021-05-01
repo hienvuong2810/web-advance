@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
+    "watch": "node-sass --watch public/style.scss --output public/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -29,6 +30,7 @@
     "moment-timezone": "^0.5.33",
     "mongoose": "^5.12.5",
     "multer": "^1.4.2",
+    "node-sass": "^5.0.0",
     "nodemon": "^2.0.7",
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",
