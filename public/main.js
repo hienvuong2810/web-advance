@@ -2,10 +2,11 @@
 $(document).ready(() => {
 
   let allPosts = []
+  let pagePost = 1;
+  getAllPost();
   
   $('#notification-dashboard-success').hide();
   $('#notification-dashboard-error').hide();
-  getAllPost();
 
   /* 
   * Login page
@@ -19,7 +20,6 @@ $(document).ready(() => {
   * Navbar
   */
    $('#btn-hide-navbar').click(() => {
-     console.log('hello')
      if($('#navbar-side').hasClass('hide-nav')){
       $('#navbar-side').removeClass('hide-nav');
       $('#div-content-right').removeClass('hide-nav');
@@ -33,36 +33,35 @@ $(document).ready(() => {
   * Dashboard
   */
 
-   $('#status-post').click(e => {
-    $('#btn-post').click((e) => {
-      console.log('hello')
-      const content = $('textarea#post-value').val();
-      const url = 'http://localhost:3000/post/createPost'
-      let formData = new FormData();
+   $('#btn-post').click((e) => {
+    const content = $('textarea#post-value').val();
+    const url = 'http://localhost:3000/post/createPost'
+    let formData = new FormData();
 
-      formData.append('content', content);
-      formData.append('image', '');
+    formData.append('content', content);
+    formData.append('image', '');
 
-      fetch(url, {
-        method: 'POST',
-        body: formData
-      })
-      .then(data => data.json())
-      .then(res => {
-        if(res.code === 200){
-         notifySuccess(res.msg)
-         postModalHide()
-        }else{
-          notifyError(res.msg)
-          postModalHide()
-        }
-      })
-      
+    fetch(url, {
+      method: 'POST',
+      body: formData
     })
-   })
+    .then(data => data.json())
+    .then(res => {
+      if(res.code === 200){
+       notifySuccess(res.msg)
+       postModalHide()
+       getAllPost()
+      }else{
+        notifyError(res.msg)
+        postModalHide()
+      }
+    })
+    
+  })
 
    function getAllPost(){
-     const url = 'http://localhost:3000/post/getPost'
+       console.log('get posts')
+     const url = 'http://localhost:3000/post/getPost/' + pagePost
     fetch(url, {
       method: 'GET'
     })
@@ -71,7 +70,8 @@ $(document).ready(() => {
       if(res.code == 200){
         allPosts = res.msg;
         console.log(allPosts)
-        updatePost()
+        updatePost(allPosts)
+        activatedDeletePost();
       }
     })
 
@@ -82,34 +82,33 @@ $(document).ready(() => {
     $('textarea#post-value').val('')
    }
 
-   function updatePost(){
+   function updatePost(arr){
      $('#news-feed').empty();
-     allPosts.forEach(post => {
+     arr.forEach(post => {
         const postDiv = $(`
         <div class="post my-2 rounded shadow-lg">
-        <div class="post__header pt-2 px-3 d-flex justify-content-between">
+        <div id="${post._id}" class="post__header pt-2 px-3 d-flex justify-content-between">
             <div class="header__auth d-flex">
-                <img src="{{user.avatar}}" alt="avatar" class="rounded-circle">
+                <img src="${post.author.avatar}" alt="avatar" class="rounded-circle">
                 <div class="d-flex flex-column px-2 py-1">
-                    <span class="auth__name">{{user.displayName}}</span>
-                    <span class="auth__date">December 23, 2021</span>
+                    <span class="auth__name">${post.author.displayName}</span>
+                    <span class="auth__date">${post.createAt}</span>
                 </div>
             </div>
             <div class="header__option">
                 <button class="rounded-circle">
                     <i class="fas fa-ellipsis-h"></i>
+                    <ul class="options__content p-0 m-0 border rounded shadow-lg">
+                        <li  data-id="${post._id}" class="delete-post p-2">Xóa post</li>
+                    </ul>
                 </button>
             </div>
         </div>
         <div class="post__content">
             <div class="content__text py-2 px-3">
                 <span>
-                    Test trạng thái
+                ${post.content}
                 </span>
-            </div>
-            <div class="content__img">
-                <img src="https://images.pexels.com/photos/132037/pexels-photo-132037.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
-                    alt="img">
             </div>
         </div>
         <div class="post__react px-3">
@@ -117,10 +116,10 @@ $(document).ready(() => {
                 <div class="quantity py-2 d-flex justify-content-between">
                     <div class="like">
                         <i class="far fa-thumbs-up"></i>
-                        <span class="mx-2">11</span>
+                        <span class="mx-2">0</span>
                     </div>
                     <div class="comment">
-                        <span class="">11 comments</span>
+                        <span class="">${post.comment?.length > 1 ? post.comment?.length + ' comments' : post.comment?.length + ' comment'}</span>
                     </div>
                 </div>
                 <div class="react border-bottom border-top d-flex justify-content-center">
@@ -133,53 +132,7 @@ $(document).ready(() => {
                         <span class="mx-2">Comment</span>
                     </button>
                 </div>
-                <div class="comments-post d-flex flex-column">
-                    <div class="user-comment d-inline-flex py-2">
-                        <img src="{{user.avatar}}" alt="avatar" class="rounded-circle">
-                        <div class="message ml-2 px-2 py-1 rounded">
-                            <span class="user-comment__name">
-                                {{user.displayName}}
-                            </span>
-                            <br />
-                            <span>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. A, fugiat
-                                impedit? Dignissimos esse impedit voluptates minus odio fuga,
-                                explicabo blanditiis ullam eaque quo perspiciatis! Voluptas
-                                voluptatem soluta iste, laudantium impedit aut reprehenderit
-                                excepturi nihil! Nostrum numquam reprehenderit nulla blanditiis amet
-                                recusandae incidunt ut fuga. Ab esse laborum inventore iure
-                                suscipit. Possimus recusandae non rem perferendis magni minima ex
-                                totam deleniti nostrum mollitia amet tempora, accusamus eveniet
-                                labore dicta beatae numquam reiciendis quasi fugiat incidunt debitis
-                                harum repudiandae at? Suscipit accusantium voluptate laudantium sunt
-                                explicabo vitae nesciunt architecto maxime officia perferendis.
-                                Eligendi commodi asperiores aliquid in fuga reprehenderit molestias
-                                quis. Eligendi!
-                            </span>
-                        </div>
-                        <div class="option">
-                            <button class="rounded-circle mx-2">
-                                <i class="fas fa-ellipsis-h"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="user-comment d-inline-flex py-2">
-                        <img src="{{user.avatar}}" alt="avatar" class="rounded-circle">
-                        <div class="message ml-2 px-2 py-1 rounded">
-                            <span class="user-comment__name">
-                                {{user.displayName}}
-                            </span>
-                            <br />
-                            <span>
-                                This is test message
-                            </span>
-                        </div>
-                        <div class="option">
-                            <button class="rounded-circle mx-2">
-                                <i class="fas fa-ellipsis-h"></i>
-                            </button>
-                        </div>
-                    </div>
+                <div id="comments-post-area-${post._id}" class="comments-post d-flex flex-column">
                 </div>
                 <div class="comment d-flex">
                     <input type="text" placeholder="Write a public comment"
@@ -188,10 +141,43 @@ $(document).ready(() => {
             </div>
         </div>
     </div>
-        `)
-     })
-     
+        `);
+        $('#news-feed').append(postDiv)
+    });
    }
+
+   function activatedDeletePost(){
+    $('.delete-post').click(e => {
+        const {id} = e.target.dataset;
+        $('#confirmModal').modal('show');
+        $('#btn-confirm').attr('data-id', id)
+    })
+   }
+    $('#btn-confirm').on('click', e => {
+        const {id} = e.target.dataset;
+        const url = 'http://localhost:3000/post/deletePost'
+        let body = {"deleteId": id};
+        console.log(body)
+        fetch(url, {
+            method: 'POST',
+            headers: {
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+            body: JSON.stringify(body)
+        })
+        .then(data => data.json())
+        .then(res => {
+            if(res.code == 200){
+                notifySuccess(res.msg)
+                $('#confirmModal').modal('hide');
+                getAllPost();
+            }else{
+                notifyError(res.msg)
+                $('#confirmModal').modal('hide');
+            }
+        })
+    })
     
    function notifySuccess(msg){
     $('#notification-dashboard-success').html(msg);

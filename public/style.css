@@ -206,15 +206,33 @@ body {
       font-weight: 600; }
     .news-feed-area .news-feed-area__posts-area .post .post__header .header__auth .auth__date {
       font-size: 13px; }
-    .news-feed-area .news-feed-area__posts-area .post .post__header .header__option button {
-      background-color: transparent;
-      outline: none;
-      border: none;
-      cursor: pointer; }
-      .news-feed-area .news-feed-area__posts-area .post .post__header .header__option button:hover {
-        background: #f1f1f1; }
-      .news-feed-area .news-feed-area__posts-area .post .post__header .header__option button:active {
-        background: #d3d3d3; }
+    .news-feed-area .news-feed-area__posts-area .post .post__header .header__option {
+      position: relative; }
+      .news-feed-area .news-feed-area__posts-area .post .post__header .header__option button {
+        background-color: transparent;
+        outline: none;
+        border: none;
+        cursor: pointer; }
+        .news-feed-area .news-feed-area__posts-area .post .post__header .header__option button .options__content {
+          position: absolute;
+          top: 30%;
+          right: 0;
+          display: none;
+          list-style: none !important;
+          width: 100px;
+          background: white; }
+          .news-feed-area .news-feed-area__posts-area .post .post__header .header__option button .options__content li {
+            cursor: pointer; }
+            .news-feed-area .news-feed-area__posts-area .post .post__header .header__option button .options__content li:hover {
+              background: #f1f1f1; }
+            .news-feed-area .news-feed-area__posts-area .post .post__header .header__option button .options__content li:active {
+              background: #d3d3d3; }
+        .news-feed-area .news-feed-area__posts-area .post .post__header .header__option button:hover {
+          background: #f1f1f1; }
+          .news-feed-area .news-feed-area__posts-area .post .post__header .header__option button:hover .options__content {
+            display: block; }
+        .news-feed-area .news-feed-area__posts-area .post .post__header .header__option button:active {
+          background: #d3d3d3; }
     .news-feed-area .news-feed-area__posts-area .post .post__content .content__img {
       height: 500px;
       overflow: hidden;

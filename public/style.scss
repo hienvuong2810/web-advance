@@ -303,13 +303,37 @@ body {
           }
         }
         .header__option {
+          position: relative;
           button {
             background-color: transparent;
             outline: none;
             border: none;
             cursor: pointer;
+
+            .options__content {
+              position: absolute;
+              top: 30%;
+              right: 0;
+              display: none;
+              list-style: none !important;
+              width: 100px;
+              background: white;
+
+              li {
+                cursor: pointer;
+                &:hover {
+                  background: #f1f1f1;
+                }
+                &:active {
+                  background: #d3d3d3;
+                }
+              }
+            }
             &:hover {
               background: #f1f1f1;
+              .options__content {
+                display: block;
+              }
             }
             &:active {
               background: #d3d3d3;

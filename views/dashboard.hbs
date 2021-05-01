@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div id="news-feed" class="news-feed-area__posts-area">
-                        <div class="post my-2 rounded shadow-lg">
+                        {{!-- <div class="post my-2 rounded shadow-lg">
                             <div class="post__header pt-2 px-3 d-flex justify-content-between">
                                 <div class="header__auth d-flex">
                                     <img src="{{user.avatar}}" alt="avatar" class="rounded-circle">
@@ -40,8 +40,12 @@
                                 <div class="header__option">
                                     <button class="rounded-circle">
                                         <i class="fas fa-ellipsis-h"></i>
-                                    </button>
+                                        <ul class="options__content p-0 m-0 border rounded shadow-lg">
+                                            <li class="p-2">Xóa post</li>
+                                        </ul>
                                 </div>
+                                </button>
+
                             </div>
                             <div class="post__content">
                                 <div class="content__text py-2 px-3">
@@ -129,7 +133,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="col-4">
@@ -161,6 +165,28 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary" id="btn-post">Post</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmModalLabel">Post</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <span>Are you sure to delete this post?</span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="btn-confirm">Confirm</button>
             </div>
         </div>
     </div>

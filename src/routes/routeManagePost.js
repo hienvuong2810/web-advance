@@ -18,9 +18,11 @@ app.use(multer({storage: storage}).fields([{name: "image", maxCount: 1 }]))
 app.post("/createPost",async (req, res)=> {
     const {content, department} = req.body
     let arrImage = []
-    req.files["image"].forEach(element => {
-        arrImage.push(element.filename)
-    });
+    if(req.files["image"] != undefined){
+        req.files["image"].forEach(element => {
+            arrImage.push(element.filename)
+        });
+    }
     //if author is student
     if(req.user.role == 0){
         Posts.create({
@@ -46,9 +48,11 @@ app.post("/createPost",async (req, res)=> {
 app.post("/updatePost", (req, res)=>{
     const {content, department} = req.body
     let arrImage = []
-    req.files["image"].forEach(element => {
-        arrImage.push(element.filename)
-    });
+    if(req.files["image"] != undefined){
+        req.files["image"].forEach(element => {
+            arrImage.push(element.filename)
+        });
+    }
     //if author is student
     if(req.user.role == 0){
         Posts.findOneAndUpdate(
@@ -81,6 +85,7 @@ app.post("/updatePost", (req, res)=>{
 //delete post
 app.post("/deletePost", (req, res)=>{
     const {deleteId} = req.body
+    console.log(req)
     Post.findOneAndDelete(
         {
             _id: deleteId,
