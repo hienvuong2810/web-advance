@@ -1,5 +1,8 @@
 const isLoggedIn = (req, res, next) => {
-    console.log(req.user)
+    if(req.session.user){
+        console.log("ADMIN or Department")
+        req.user = req.session.user
+    }
     if (req.user) {
         next();
     } else {

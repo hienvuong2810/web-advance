@@ -16,7 +16,14 @@ $(document).ready(() => {
     $('#btn-login').click(e => {
       const url = 'http://localhost:3000/login';
       fetch(url, {
-        method: 'POST'
+        method: 'POST',
+        headers:{
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          "username": $("input[name=email]").val(),
+          "password": $("input[name=password]").val()
+        })
       })
       .then(data => data.json())
       .then(res => {

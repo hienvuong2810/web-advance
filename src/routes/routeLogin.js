@@ -94,6 +94,7 @@ app.post('/login', authValidation, async (req, res) => {
     if (bcrypt.compareSync(password, query.password)){
       // let resClient =  User.findOne({username: req.username}).select(["-__v", "-password"])
       // return res.json({code: 200, msg: "Đăng nhập thành công", user: resClient})
+          req.session.user = query
       return res.json({code: 200, msg: "Đăng nhập thành công"})
     }else{
       return res.json({code: 500, msg: "Sai mật khẩu"})

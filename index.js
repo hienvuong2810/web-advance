@@ -2,15 +2,16 @@ const express = require("express")
 const passport = require('passport');
 const mongoose = require('mongoose')
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const cookieSession = require('cookie-session')
+const session = require('cookie-session')
 const flash = require('connect-flash');
 const app = express()
 const hbs = require('express-handlebars')
-app.use(cookieSession({  
-    //maxAge: 24*60*60*1000,
-    name: 'session',
-    keys: ['key1', 'key2']
-  }))
+app.use(session({
+    resave: true, 
+    saveUninitialized: true, 
+    secret: 'somesecret', 
+    cookie: { maxAge: 60000 }}));
+
 app.use("/images", express.static(__dirname + '/images'));
 app.use("/public", express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: true }));
