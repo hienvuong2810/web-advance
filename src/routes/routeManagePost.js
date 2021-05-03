@@ -115,7 +115,7 @@ app.get("/getPost/:page",async (req, res)=>{
 //id => id of user
 app.get("/all/:id/:page", async (req, res)=>{
     const {id ,page = 1, limit = 10} = req.params
-    let result =  await Post.find({_id: id}).limit(limit * 1).skip((page - 1) * limit).populate("author").populate("comment")
+    let result =  await Post.find({author: id}).limit(limit * 1).skip((page - 1) * limit).populate("author").populate("comment")
     return res.status(200).json({code: 200, msg: result})
 })
 

@@ -1,145 +1,146 @@
-<div>
-    {{>header}}
-    <div id="div-content-right">
-        <div class="container">
-            <div class="row">
-                <div class="news-feed-area col-8 px-md-5">
-                    <div class="news-feed-area__header p-3 border rounded shadow-sm">
-                        <div class="status d-flex border-bottom pb-3">
-                            <img src="{{user.avatar}}" alt="avatar" class="rounded-circle">
-                            <div id="status-post" class="w-100 border mx-2 px-3 py-2" data-toggle="modal"
-                                data-target="#postModal">
-                                <span>What's on your mind, {{user.displayName}}?</span>
-                            </div>
-                        </div>
-                        <div class="action d-flex justify-content-between px-5 pt-2">
-                            <button>
-                                <i class="fas fa-video text-danger"></i>
-                                <span>Live Video</span>
-                            </button>
-                            <button>
-                                <i class="fas fa-images text-success"></i>
-                                <span>Photo/Video</span>
-                            </button>
-                            <button>
-                                <i class="far fa-laugh text-warning"></i>
-                                <span>Feeling/Activity</span>
-                            </button>
-                        </div>
-                    </div>
-                    <div id="news-feed" class="news-feed-area__posts-area">
-                        {{!-- <div class="post my-2 rounded shadow-lg">
-                            <div class="post__header pt-2 px-3 d-flex justify-content-between">
-                                <div class="header__auth d-flex">
-                                    <img src="{{user.avatar}}" alt="avatar" class="rounded-circle">
-                                    <div class="d-flex flex-column px-2 py-1">
-                                        <span class="auth__name">{{user.displayName}}</span>
-                                        <span class="auth__date">December 23, 2021</span>
-                                    </div>
-                                </div>
-                                <div class="header__option">
-                                    <button class="rounded-circle">
-                                        <i class="fas fa-ellipsis-h"></i>
-                                        <ul class="options__content p-0 m-0 border rounded shadow-lg">
-                                            <li class="p-2">Xóa post</li>
-                                        </ul>
-                                </div>
-                                </button>
-
-                            </div>
-                            <div class="post__content">
-                                <div class="content__text py-2 px-3">
-                                    <span>
-                                        Test trạng thái
-                                    </span>
-                                </div>
-                                <div class="content__img">
-                                    <img src="https://images.pexels.com/photos/132037/pexels-photo-132037.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
-                                        alt="img">
-                                </div>
-                            </div>
-                            <div class="post__react px-3">
-                                <div class="react__action">
-                                    <div class="quantity py-2 d-flex justify-content-between">
-                                        <div class="like">
-                                            <i class="far fa-thumbs-up"></i>
-                                            <span class="mx-2">11</span>
-                                        </div>
-                                        <div class="comment">
-                                            <span class="">11 comments</span>
-                                        </div>
-                                    </div>
-                                    <div class="react border-bottom border-top d-flex justify-content-center">
-                                        <button>
-                                            <i class="far fa-thumbs-up"></i>
-                                            <span class="mx-2">Like</span>
-                                        </button>
-                                        <button>
-                                            <i class="far fa-comment-alt"></i>
-                                            <span class="mx-2">Comment</span>
-                                        </button>
-                                    </div>
-                                    <div class="comments-post d-flex flex-column">
-                                        <div class="user-comment d-inline-flex py-2">
-                                            <img src="{{user.avatar}}" alt="avatar" class="rounded-circle">
-                                            <div class="message ml-2 px-2 py-1 rounded">
-                                                <span class="user-comment__name">
-                                                    {{user.displayName}}
-                                                </span>
-                                                <br />
-                                                <span>
-                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. A, fugiat
-                                                    impedit? Dignissimos esse impedit voluptates minus odio fuga,
-                                                    explicabo blanditiis ullam eaque quo perspiciatis! Voluptas
-                                                    voluptatem soluta iste, laudantium impedit aut reprehenderit
-                                                    excepturi nihil! Nostrum numquam reprehenderit nulla blanditiis amet
-                                                    recusandae incidunt ut fuga. Ab esse laborum inventore iure
-                                                    suscipit. Possimus recusandae non rem perferendis magni minima ex
-                                                    totam deleniti nostrum mollitia amet tempora, accusamus eveniet
-                                                    labore dicta beatae numquam reiciendis quasi fugiat incidunt debitis
-                                                    harum repudiandae at? Suscipit accusantium voluptate laudantium sunt
-                                                    explicabo vitae nesciunt architecto maxime officia perferendis.
-                                                    Eligendi commodi asperiores aliquid in fuga reprehenderit molestias
-                                                    quis. Eligendi!
-                                                </span>
-                                            </div>
-                                            <div class="option">
-                                                <button class="rounded-circle mx-2">
-                                                    <i class="fas fa-ellipsis-h"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="user-comment d-inline-flex py-2">
-                                            <img src="{{user.avatar}}" alt="avatar" class="rounded-circle">
-                                            <div class="message ml-2 px-2 py-1 rounded">
-                                                <span class="user-comment__name">
-                                                    {{user.displayName}}
-                                                </span>
-                                                <br />
-                                                <span>
-                                                    This is test message
-                                                </span>
-                                            </div>
-                                            <div class="option">
-                                                <button class="rounded-circle mx-2">
-                                                    <i class="fas fa-ellipsis-h"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="comment d-flex">
-                                        <input type="text" placeholder="Write a public comment"
-                                            class="w-100 border m-3 p-2 rounded">
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
+<div class="container">
+    <div class="row">
+        <div class="news-feed-area col-8 px-md-5">
+            <h1 class="mb-3">Trang chủ</h1>
+            <div class="news-feed-area__header p-3 border rounded shadow-sm">
+                <div class="status d-flex border-bottom pb-3">
+                    <img src="{{user.avatar}}" alt="avatar" class="rounded-circle">
+                    <div id="status-post" class="w-100 border mx-2 px-3 py-2" data-toggle="modal"
+                        data-target="#postModal">
+                        <span>What's on your mind, {{user.displayName}}?</span>
                     </div>
                 </div>
-                <div class="col-4">
-                    hello
+                <div class="action d-flex justify-content-between px-5 pt-2">
+                    <button>
+                        <i class="fas fa-video text-danger"></i>
+                        <span>Live Video</span>
+                    </button>
+                    <button>
+                        <i class="fas fa-images text-success"></i>
+                        <span>Photo/Video</span>
+                    </button>
+                    <button>
+                        <i class="far fa-laugh text-warning"></i>
+                        <span>Feeling/Activity</span>
+                    </button>
                 </div>
             </div>
+            <div id="news-feed" class="news-feed-area__posts-area">
+                {{!-- <div class="post my-2 rounded shadow-lg">
+                    <div class="post__header pt-2 px-3 d-flex justify-content-between">
+                        <div class="header__auth d-flex">
+                            <img src="{{user.avatar}}" alt="avatar" class="rounded-circle">
+                            <div class="d-flex flex-column px-2 py-1">
+                                <span class="auth__name">{{user.displayName}}</span>
+                                <span class="auth__date">December 23, 2021</span>
+                            </div>
+                        </div>
+                        <div class="header__option">
+                            <button class="rounded-circle">
+                                <i class="fas fa-ellipsis-h"></i>
+                                <ul class="options__content p-0 m-0 border rounded shadow-lg">
+                                    <li class="p-2">Xóa post</li>
+                                </ul>
+                        </div>
+                        </button>
+
+                    </div>
+                    <div class="post__content">
+                        <div class="content__text py-2 px-3">
+                            <span>
+                                Test trạng thái
+                            </span>
+                        </div>
+                        <div class="content__img">
+                            <img src="https://images.pexels.com/photos/132037/pexels-photo-132037.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+                                alt="img">
+                        </div>
+                    </div>
+                    <div class="post__react px-3">
+                        <div class="react__action">
+                            <div class="quantity py-2 d-flex justify-content-between">
+                                <div class="like">
+                                    <i class="far fa-thumbs-up"></i>
+                                    <span class="mx-2">11</span>
+                                </div>
+                                <div class="comment">
+                                    <span class="">11 comments</span>
+                                </div>
+                            </div>
+                            <div class="react border-bottom border-top d-flex justify-content-center">
+                                <button>
+                                    <i class="far fa-thumbs-up"></i>
+                                    <span class="mx-2">Like</span>
+                                </button>
+                                <button>
+                                    <i class="far fa-comment-alt"></i>
+                                    <span class="mx-2">Comment</span>
+                                </button>
+                            </div>
+                            <div class="comments-post d-flex flex-column">
+                                <div class="user-comment d-inline-flex py-2">
+                                    <img src="{{user.avatar}}" alt="avatar" class="rounded-circle">
+                                    <div class="message ml-2 px-2 py-1 rounded">
+                                        <span class="user-comment__name">
+                                            {{user.displayName}}
+                                        </span>
+                                        <br />
+                                        <span>
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. A, fugiat
+                                            impedit? Dignissimos esse impedit voluptates minus odio fuga,
+                                            explicabo blanditiis ullam eaque quo perspiciatis! Voluptas
+                                            voluptatem soluta iste, laudantium impedit aut reprehenderit
+                                            excepturi nihil! Nostrum numquam reprehenderit nulla blanditiis amet
+                                            recusandae incidunt ut fuga. Ab esse laborum inventore iure
+                                            suscipit. Possimus recusandae non rem perferendis magni minima ex
+                                            totam deleniti nostrum mollitia amet tempora, accusamus eveniet
+                                            labore dicta beatae numquam reiciendis quasi fugiat incidunt debitis
+                                            harum repudiandae at? Suscipit accusantium voluptate laudantium sunt
+                                            explicabo vitae nesciunt architecto maxime officia perferendis.
+                                            Eligendi commodi asperiores aliquid in fuga reprehenderit molestias
+                                            quis. Eligendi!
+                                        </span>
+                                    </div>
+                                    <div class="option">
+                                        <button class="rounded-circle mx-2">
+                                            <i class="fas fa-ellipsis-h"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="user-comment d-inline-flex py-2">
+                                    <img src="{{user.avatar}}" alt="avatar" class="rounded-circle">
+                                    <div class="message ml-2 px-2 py-1 rounded">
+                                        <span class="user-comment__name">
+                                            {{user.displayName}}
+                                        </span>
+                                        <br />
+                                        <span>
+                                            This is test message
+                                        </span>
+                                    </div>
+                                    <div class="option">
+                                        <button class="rounded-circle mx-2">
+                                            <i class="fas fa-ellipsis-h"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comment d-flex">
+                                <input type="text" placeholder="Write a public comment"
+                                    class="w-100 border m-3 p-2 rounded">
+                            </div>
+                        </div>
+                    </div>
+                </div> --}}
+            </div>
+            <div class="text-center py-3">
+                <span id="btn-load-more" class="font-italic">
+                    <u>Load more</u>
+                </span>
+            </div>
+        </div>
+        <div class="col-4">
+            hello
         </div>
     </div>
 </div>
@@ -190,11 +191,4 @@
             </div>
         </div>
     </div>
-</div>
-
-<div id="notification-dashboard-success" class="fixed-bottom rounded m-2 p-2 bg-success text-white">
-
-</div>
-<div id="notification-dashboard-error" class="fixed-bottom rounded m-2 p-2 bg-danger text-white">
-
 </div>

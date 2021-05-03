@@ -49,9 +49,6 @@ app.use("/", routeLogin)
 app.get("/test", (req, res)=>{
     res.render("test")
 })
-app.get('/dashboard', auth, (req, res) => {
-    res.render('dashboard', {user: req.user});
-})
 
 
 mongoose.connect('mongodb://localhost:27017/Web', {

@@ -15,7 +15,6 @@ body {
   }
 }
 #div-content-right {
-  margin-top: 60px;
   margin-left: 250px;
 
   &.hide-nav {
@@ -24,8 +23,8 @@ body {
   }
 }
 // Notification
-#notification-dashboard-success,
-#notification-dashboard-error {
+#notification-success,
+#notification-error {
   width: fit-content !important;
   min-width: 200px;
 }
@@ -213,6 +212,10 @@ body {
         &:hover {
           background-color: #e74c3c;
         }
+
+        i {
+          min-width: 20px;
+        }
       }
     }
   }
@@ -297,6 +300,7 @@ body {
           }
           .auth__name {
             font-weight: 600;
+            cursor: pointer;
           }
           .auth__date {
             font-size: 13px;
@@ -414,10 +418,43 @@ body {
       }
     }
   }
+  #btn-load-more {
+    cursor: pointer;
+  }
 }
 
 /**************
                         ^
   DASHBOARD PAGE END    |  
                         |
+   ***************/
+
+/**************
+                            |
+ALL DEPARTMENT PAGE END     |  
+                            v
+   ***************/
+
+.all-department-area {
+  font-size: 15px;
+
+  .list-department {
+    .department-card {
+      background: white;
+      cursor: pointer;
+      width: 100%;
+      font-weight: 600;
+      &:hover {
+        background: #f1f1f1;
+      }
+      &:active {
+        background: #d3d3d3;
+      }
+    }
+  }
+}
+/**************
+                              ^
+  ALL DEPARTMENT PAGE END     |  
+                              |
    ***************/
