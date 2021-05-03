@@ -35,10 +35,19 @@ app.get("/", auth, (req, res) => {
 
 app.get("/login", (req, res)=>{
     // let x = req.flash('error')
+    console.log('login',req)
     if(req.user != undefined){
       switch (req.user.role) {
         case 0:
           return res.redirect('/dashboard')
+        case 1:
+          return res.redirect('/admin')
+        case 2:
+          return res.redirect('/department')
+      }
+    }
+    else if(req.session.user){
+      switch (req.session.user.role) {
         case 1:
           return res.redirect('/admin')
         case 2:
@@ -84,7 +93,7 @@ app.get('/all-department', auth, (req,res) => {
 
 // Login
 // , passport.authenticate('local', {failureRedirect: '/login', failureFlash: true}) 
-app.post('/login', authValidation, passport.authenticate('Local', {failureRedirect: '/login', failureFlash: true})  ,async (req, res) => {
+app.post('/login', authValidation, async (req, res) => {
   const result = validationResult(req);
   console.log(req)
   if (result.errors.length === 0){

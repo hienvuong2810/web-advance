@@ -24,24 +24,32 @@ app.post("/createPost",async (req, res)=> {
         });
     }
     //if author is student
-    if(req.user.role == 0){
-        Posts.create({
-            author : req.user._id,
-            content: content,
-            createAt: getDate,
-            files: arrImage,
-            department: "",
-            comment:  []
-        }, function(err, docs){
-            if (err){
-                return res.status(500).json({code: 500, msg: "Đăng bài thất bại"})
-            }else{
-                return res.status(200).json({code: 200, msg: "Đăng bài thành công"})
-            }
-        })
-    }else{
-        return res.status(400).json({code: 400, msg: "Đăng bài thất bại"}) 
-    }
+    // if(req.user.role == 0 || req.sess.user.role == 0){
+    let idAuthor = req?.user?._id ? req.user._id : req.session.user._id
+    // if(req?.user?._id){
+    //     idAuthor = req.user._id
+    // }else{
+    //     idAuthor = 
+    // }
+    console.log(req)
+    Posts.create({
+        author :idAuthor,
+        content: content,
+        createAt: getDate,
+        files: arrImage,
+        department: "",
+        comment:  []
+    }, function(err, docs){
+        if (err){
+            return res.status(500).json({code: 500, msg: "Đăng bài thất bại"})
+        }else{
+            return res.status(200).json({code: 200, msg: "Đăng bài thành công"})
+        }
+    })
+
+    // }else{
+    //     return res.status(400).json({code: 400, msg: "Đăng bài thất bại"}) 
+    // }
 })
 
 //update post
@@ -86,10 +94,12 @@ app.post("/updatePost", (req, res)=>{
 app.post("/deletePost", (req, res)=>{
     const {deleteId} = req.body
     console.log(req)
+    
+    let idAuthor = req?.user?._id ? req.user._id : req.session.user._id
     Post.findOneAndDelete(
         {
             _id: deleteId,
-            author: req.user._id
+            author: idAuthor
         },function(err, docs){
             if (err){
                 return res.status(500).json({code: 500, msg: "Xóa bài thất bại" + err})

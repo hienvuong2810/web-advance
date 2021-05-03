@@ -1,6 +1,6 @@
 <nav id="navbar-side" class="navbar-side fixed-top ">
 
-    <div class="navbar-side__title-menu text-center position-relative">
+    <div class="navbar-side__title-menu px-3 position-relative">
         <span class="p-0 m-0">Thông báo</span>
         <div id="btn-hide-navbar">
             <i class="fas fa-bars"></i>
@@ -8,8 +8,10 @@
     </div>
 
     <div class="navbar-side__auth d-flex justify-content-between ">
-        <img src="{{user.avatar}}" alt="avatar-user" class="auth__avatar rounded-circle">
-        <span class="auth__name">{{user.displayName}}</span>
+        <div>
+            <img src="{{user.avatar}}" alt="avatar-user" class="auth__avatar rounded-circle">
+            <span class="auth__name mx-2">{{user.displayName}}</span>
+        </div>
         <div class="auth__btn-logout" title="Logout">
             <i class="fas fa-sign-out-alt"></i>
         </div>

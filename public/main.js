@@ -4,7 +4,7 @@ $(document).ready(() => {
   $('#notification-success').hide();
   $('#notification-error').hide();
   
-
+  
 
   /* 
   * Login page
@@ -17,17 +17,17 @@ $(document).ready(() => {
       const url = 'http://localhost:3000/login';
       const username = $("input[name='username']").val();
       const password = $("input[name='password']").val();0
-      const body = {
-        username: username,
-        password: password,
-      }
+      // const body = {
+      //   username: username,
+      //   password: password,
+      // }
       fetch(url, {
         method: 'POST',
         headers:{
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          "username": $("input[name=email]").val(),
+          "username": $("input[name=username]").val(),
           "password": $("input[name=password]").val()
         })
       })
@@ -35,7 +35,9 @@ $(document).ready(() => {
       .then(res => {
         console.log(res)
         if(res.code == 200){
-          
+          location.pathname = '/'
+        }else{
+          notifyError(res.msg);
         }
       })
     })
@@ -100,15 +102,15 @@ $(document).ready(() => {
    });
 
   /*
-  * Dashboard
+  * News feed
   */
 
   
-  if(location.pathname.includes('dashboard')){
+  if(!location.pathname.includes('all-notification') && !location.pathname.includes('all-department')){
     let allPosts = []
     let pagePost = 1;
 
-    const queryId = location.search?.replace('?id=', '');
+    const queryId = location.search?.replace('?idPost=', '');
     if(queryId){
       console.log(queryId)
       getPostById(queryId);
@@ -123,7 +125,6 @@ $(document).ready(() => {
   
       formData.append('content', content);
       formData.append('image', '');
-  
       fetch(url, {
         method: 'POST',
         body: formData
@@ -139,7 +140,6 @@ $(document).ready(() => {
           postModalHide()
         }
       })
-      
     })
   
     function getPostById(id, reset = true){
@@ -252,44 +252,44 @@ $(document).ready(() => {
       });
      }
   
-     function activatedDeletePost(){
-      $('.delete-post').click(e => {
-          const {id} = e.target.dataset;
-          $('#confirmModal').modal('show');
-          $('#btn-confirm').attr('data-id', id)
-      })
-     }
+      function activatedDeletePost(){
+        $('.delete-post').click(e => {
+            const {id} = e.target.dataset;
+            $('#confirmModal').modal('show');
+            $('#btn-confirm').attr('data-id', id)
+        })
+      }
       $('#btn-confirm').on('click', e => {
-          const {id} = e.target.dataset;
-          const url = 'http://localhost:3000/post/deletePost'
-          let body = {"deleteId": id};
-          console.log(body)
-          fetch(url, {
-              method: 'POST',
-              headers: {
-        'Content-Type': 'application/json'
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-              body: JSON.stringify(body)
-          })
-          .then(data => data.json())
-          .then(res => {
-              if(res.code == 200){
-                  notifySuccess(res.msg)
-                  $('#confirmModal').modal('hide');
-                  getAllPost();
-              }else{
-                  notifyError(res.msg)
-                  $('#confirmModal').modal('hide');
-              }
-          })
+        const {id} = e.target.dataset;
+        const url = 'http://localhost:3000/post/deletePost'
+        let body = {"deleteId": id};
+        console.log(body)
+        fetch(url, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+              // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: JSON.stringify(body)
+        })
+        .then(data => data.json())
+        .then(res => {
+            if(res.code == 200){
+                notifySuccess(res.msg)
+                $('#confirmModal').modal('hide');
+                getAllPost();
+            }else{
+                notifyError(res.msg)
+                $('#confirmModal').modal('hide');
+            }
+        })
       });
   
       function activatedNameClick(){
         $('.auth__name').click(e => {
           const {id} = e.target.dataset
           console.log(id)
-          location.search = `?id=${id}`
+          location.search = `?idPost=${id}`
         })
       }
   
@@ -303,20 +303,7 @@ $(document).ready(() => {
   
       })
       
-     function notifySuccess(msg){
-      $('#notification-success').html(msg);
-      $('#notification-success').show();
-      setTimeout(() => {
-        $('#notification-success').hide();
-      }, 3000)
-     }
-     function notifyError(msg){
-      $('#notification-error').html(msg);
-      $('#notification-error').show();
-      setTimeout(() => {
-        $('#notification-error').hide();
-      }, 3000)
-     }
+     
   }
 
    
@@ -368,5 +355,19 @@ $(document).ready(() => {
   }
 
 
-
+  // COMMON notify
+  function notifySuccess(msg){
+    $('#notification-success').html(msg);
+    $('#notification-success').show();
+    setTimeout(() => {
+      $('#notification-success').hide();
+    }, 3000)
+   }
+   function notifyError(msg){
+    $('#notification-error').html(msg);
+    $('#notification-error').show();
+    setTimeout(() => {
+      $('#notification-error').hide();
+    }, 3000)
+   }
 })

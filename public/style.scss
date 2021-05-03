@@ -139,14 +139,14 @@ body {
   .navbar-side__title-menu {
     background: #2f4355;
     text-transform: uppercase;
-    padding: 5px 10px;
+    padding: 0.6rem 10px 5px;
     font-weight: bold;
     font-size: 25px;
     height: 60px;
 
     #btn-hide-navbar {
       position: absolute;
-      left: 100%;
+      right: 0;
       top: 0;
       background: #33485c;
       font-size: 22px;
@@ -243,7 +243,8 @@ body {
 }
 // MODAL  ^
 
-.news-feed-area {
+.news-feed-area,
+.all-department-area {
   font-size: 15px;
   .news-feed-area__header {
     background-color: white;
@@ -457,4 +458,35 @@ ALL DEPARTMENT PAGE END     |
                               ^
   ALL DEPARTMENT PAGE END     |  
                               |
+   ***************/
+
+/**************
+                      |
+  ADMIN PAGE END      |  
+                      v
+   ***************/
+
+.create-account-area {
+  background: white;
+  font-size: 15px;
+
+  #btn-create-department-account {
+    outline: none;
+    cursor: pointer;
+    background: #33485c;
+    padding: 5px 15px;
+    color: white;
+    &:hover {
+      background: #405262;
+    }
+    &:active {
+      background: #33485c;
+    }
+  }
+}
+
+/**************
+                      ^
+  ADMIN PAGE END      |  
+                      |
    ***************/
