@@ -23,10 +23,13 @@ $(document).ready(() => {
       }
       fetch(url, {
         method: 'POST',
-        headers: {
+        headers:{
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(body)
+        body: JSON.stringify({
+          "username": $("input[name=email]").val(),
+          "password": $("input[name=password]").val()
+        })
       })
       .then(data => data.json())
       .then(res => {
