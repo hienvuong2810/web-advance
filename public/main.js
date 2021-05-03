@@ -15,11 +15,22 @@ $(document).ready(() => {
 
     $('#btn-login').click(e => {
       const url = 'http://localhost:3000/login';
+      const username = $("input[name='username']").val();
+      const password = $("input[name='password']").val();0
+      const body = {
+        username: username,
+        password: password,
+      }
       fetch(url, {
-        method: 'POST'
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
       })
       .then(data => data.json())
       .then(res => {
+        console.log(res)
         if(res.code == 200){
           
         }

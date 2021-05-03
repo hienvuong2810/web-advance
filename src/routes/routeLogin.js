@@ -83,8 +83,10 @@ app.get('/all-department', auth, (req,res) => {
 
 
 // Login
-app.post('/login', authValidation, async (req, res) => {
+// , passport.authenticate('local', {failureRedirect: '/login', failureFlash: true}) 
+app.post('/login', authValidation, passport.authenticate('Local', {failureRedirect: '/login', failureFlash: true})  ,async (req, res) => {
   const result = validationResult(req);
+  console.log(req)
   if (result.errors.length === 0){
     let {username, password } = req.body
     let query = await Account.findOne({username: username})
@@ -92,8 +94,6 @@ app.post('/login', authValidation, async (req, res) => {
       return res.json({code: 500, msg: "Tài khoản không tồn tại"})
     }
     if (bcrypt.compareSync(password, query.password)){
-      // let resClient =  User.findOne({username: req.username}).select(["-__v", "-password"])
-      // return res.json({code: 200, msg: "Đăng nhập thành công", user: resClient})
       return res.json({code: 200, msg: "Đăng nhập thành công"})
     }else{
       return res.json({code: 500, msg: "Sai mật khẩu"})

@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const Account = require('./src/db/AccountSchema')
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/SOA', {
+mongoose.connect('mongodb://localhost:27017/Web', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
