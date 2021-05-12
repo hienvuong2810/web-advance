@@ -16,7 +16,7 @@ app.use(multer({storage: storage}).fields([{name: "image", maxCount: 1 }]))
 
 //create post
 app.post("/createPost",async (req, res)=> {
-    const {content, department} = req.body
+    const {content, department, youtubeUrl} = req.body
     let arrImage = []
     if(req.files["image"] != undefined){
         req.files["image"].forEach(element => {
@@ -26,6 +26,7 @@ app.post("/createPost",async (req, res)=> {
     //if author is student
     // if(req.user.role == 0 || req.sess.user.role == 0){
     let idAuthor = req?.user?._id ? req.user._id : req.session.user._id
+    const ytbId = YouTubeGetID(youtubeUrl);
     // if(req?.user?._id){
     //     idAuthor = req.user._id
     // }else{
@@ -34,7 +35,7 @@ app.post("/createPost",async (req, res)=> {
     console.log(req)
     Posts.create({
         author :idAuthor,
-        content: content,
+        content: youtubeUrl ? content + '---youtubebreakurl---' + ytbId : content,
         createAt: getDate,
         files: arrImage,
         department: "",
@@ -51,6 +52,11 @@ app.post("/createPost",async (req, res)=> {
     //     return res.status(400).json({code: 400, msg: "Đăng bài thất bại"}) 
     // }
 })
+
+function YouTubeGetID(url){
+    url = url.split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+    return (url[2] !== undefined) ? url[2].split(/[^0-9a-z_\-]/i)[0] : url[0];
+ }
 
 //update post
 app.post("/updatePost", (req, res)=>{
@@ -117,7 +123,7 @@ app.post("/deletePost", (req, res)=>{
 //get post with page, default limit = 10
 app.get("/getPost/:page",async (req, res)=>{
     const {page = 1, limit = 10} = req.params
-    let result =  await Post.find({}).limit(limit * 1).skip((page - 1) * limit).populate("author").populate("comment")
+    let result =  await Post.find({}).sort({createAt: -1}).limit(limit * 1).skip((page - 1) * limit).populate("author").populate({path: "comment", populate: {path: 'author'}})
     return res.status(200).json({code: 200, msg: result})
 })
 
@@ -125,7 +131,7 @@ app.get("/getPost/:page",async (req, res)=>{
 //id => id of user
 app.get("/all/:id/:page", async (req, res)=>{
     const {id ,page = 1, limit = 10} = req.params
-    let result =  await Post.find({author: id}).limit(limit * 1).skip((page - 1) * limit).populate("author").populate("comment")
+    let result =  await Post.find({author: id}).sort({createAt: -1}).limit(limit * 1).skip((page - 1) * limit).populate("author").populate({path: "comment", populate: {path: 'author'}})
     return res.status(200).json({code: 200, msg: result})
 })
 

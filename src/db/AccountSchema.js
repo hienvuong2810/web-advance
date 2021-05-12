@@ -12,7 +12,10 @@ const AccountSchema = new Schema({
     // role == 0 : Student
     // role == 1 : ADMIN
     // role == 2 : Department
-    department: Array,
+    // department: Array,
+    department: [
+        {type: Schema.Types.ObjectId, ref: 'Department'}
+    ],
     // list department of user (only role == 2)
     avatar: String,
     class: String,

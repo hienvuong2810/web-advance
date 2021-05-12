@@ -35,7 +35,7 @@ app.engine('hbs', hbs({extname: 'hbs'}))
 app.set('view engine', 'hbs');
 
 
-const auth = require("./utils/auth")
+const {auth} = require("./utils/auth")
 const routeLogin = require("./src/routes/routeLogin")
 const routeManageAccount = require("./src/routes/routeManageAccounts")
 const routeManagePost = require("./src/routes/routeManagePost")

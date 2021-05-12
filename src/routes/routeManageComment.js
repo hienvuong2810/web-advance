@@ -4,8 +4,11 @@ const Comment = require("../db/CommentSchema")
 const Post = require("../db/PostSchema")
 const getDate = require("../../utils/date")
 app.post("/add", (req, res)=>{
+    console.log(req.body)
     const {postId, content} = req.body
-    Comment.create({author: req.user._id, content: content, createAt: getDate, commentAt: postId}, function(err, docs){
+    console.log(postId, content)
+    let idAuthor = req?.user?._id ? req.user._id : req.session.user._id
+    Comment.create({author: idAuthor, content: content, createAt: getDate, commentAt: postId}, function(err, docs){
         if(err){
             return res.status(500).json({code: 500, msg: "Lỗi comment"})
         }else{

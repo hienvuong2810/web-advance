@@ -6,6 +6,17 @@ body {
   background-color: #f0f2f5;
 }
 
+.mt-04rem {
+  margin-top: 0.4rem !important;
+}
+
+.fixed-end {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: 1030;
+}
+
 @keyframes content-right-transform {
   from {
     margin-left: 250px;
@@ -27,6 +38,26 @@ body {
 #notification-error {
   width: fit-content !important;
   min-width: 200px;
+}
+#notification-notify {
+  width: fit-content !important;
+  min-width: 200px;
+  a {
+    font-weight: 700;
+  }
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+span.user-select-n {
+  -webkit-user-select: none !important; /* Chrome all / Safari all */
+  -moz-user-select: none !important; /* Firefox all */
+  -ms-user-select: none !important; /* IE 10+ */
+  user-select: none !important;
 }
 
 /**************
@@ -360,15 +391,21 @@ body {
             background-size: cover;
           }
         }
+
+        .content__video {
+          height: 500px;
+          display: flex;
+          justify-content: center;
+        }
       }
       .post__react {
         .react__action {
-          .quantity {
-            .like {
-            }
-            .comment {
-            }
-          }
+          // .quantity {
+          //   .like {
+          //   }
+          //   .comment {
+          //   }
+          // }
           .react {
             button {
               width: 100%;
@@ -399,13 +436,36 @@ body {
                   font-weight: 600;
                 }
               }
-              .option {
+              .option_comment {
                 button {
+                  position: relative;
                   background-color: transparent;
                   outline: none;
                   border: none;
                   cursor: pointer;
+                  .options__content {
+                    position: absolute;
+                    top: 20px;
+                    left: 0;
+                    display: none;
+                    list-style: none !important;
+                    background: white;
+
+                    li {
+                      font-size: 12px;
+                      cursor: pointer;
+                      &:hover {
+                        background: #f1f1f1;
+                      }
+                      &:active {
+                        background: #d3d3d3;
+                      }
+                    }
+                  }
                   &:hover {
+                    .options__content {
+                      display: block;
+                    }
                     background: #f1f1f1;
                   }
                   &:active {
@@ -415,12 +475,27 @@ body {
               }
             }
           }
+          .comment-action {
+            .btn-comment {
+              outline: none;
+              cursor: pointer;
+              background: #33485c;
+              color: white;
+              &:hover {
+                background: #405262;
+              }
+              &:active {
+                background: #33485c;
+              }
+            }
+          }
         }
       }
     }
   }
   #btn-load-more {
     cursor: pointer;
+    visibility: hidden;
   }
 }
 
@@ -461,16 +536,52 @@ ALL DEPARTMENT PAGE END     |
    ***************/
 
 /**************
+                            |
+ALL NOTIFICATION PAGE END     |  
+                            v
+   ***************/
+
+.all-notification-area {
+  font-size: 15px;
+
+  .list-notification {
+    .notification-card {
+      background: white;
+      cursor: pointer;
+      width: 100%;
+      font-weight: 600;
+      &:hover {
+        background: #f1f1f1;
+      }
+      &:active {
+        background: #d3d3d3;
+      }
+
+      .notification-card-content {
+        font-weight: 400;
+      }
+    }
+  }
+}
+/**************
+                              ^
+  ALL NOTIFICATION PAGE END     |  
+                              |
+   ***************/
+
+/**************
                       |
   ADMIN PAGE END      |  
                       v
    ***************/
 
-.create-account-area {
+.create-account-area,
+.create-notification-area {
   background: white;
   font-size: 15px;
 
-  #btn-create-department-account {
+  #btn-create-department-account,
+  #btn-create-notification {
     outline: none;
     cursor: pointer;
     background: #33485c;
@@ -490,3 +601,11 @@ ALL DEPARTMENT PAGE END     |
   ADMIN PAGE END      |  
                       |
    ***************/
+
+@media (min-width: 990px) {
+  .sticky-top-area {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+  }
+}

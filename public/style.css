@@ -2,6 +2,15 @@ body {
   font-size: 13px;
   background-color: #f0f2f5; }
 
+.mt-04rem {
+  margin-top: 0.4rem !important; }
+
+.fixed-end {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: 1030; }
+
 @keyframes content-right-transform {
   from {
     margin-left: 250px; }
@@ -18,6 +27,26 @@ body {
 #notification-error {
   width: fit-content !important;
   min-width: 200px; }
+
+#notification-notify {
+  width: fit-content !important;
+  min-width: 200px; }
+  #notification-notify a {
+    font-weight: 700; }
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+span.user-select-n {
+  -webkit-user-select: none !important;
+  /* Chrome all / Safari all */
+  -moz-user-select: none !important;
+  /* Firefox all */
+  -ms-user-select: none !important;
+  /* IE 10+ */
+  user-select: none !important; }
 
 /**************
                     |
@@ -268,6 +297,11 @@ body {
       .all-department-area .news-feed-area__posts-area .post .post__content .content__img img {
         cursor: pointer;
         background-size: cover; }
+    .news-feed-area .news-feed-area__posts-area .post .post__content .content__video,
+    .all-department-area .news-feed-area__posts-area .post .post__content .content__video {
+      height: 500px;
+      display: flex;
+      justify-content: center; }
     .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .react button,
     .all-department-area .news-feed-area__posts-area .post .post__react .react__action .react button {
       width: 100%;
@@ -296,21 +330,56 @@ body {
         .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .message .user-comment__name,
         .all-department-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .message .user-comment__name {
           font-weight: 600; }
-      .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option button,
-      .all-department-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option button {
+      .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option_comment button,
+      .all-department-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option_comment button {
+        position: relative;
         background-color: transparent;
         outline: none;
         border: none;
         cursor: pointer; }
-        .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option button:hover,
-        .all-department-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option button:hover {
+        .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option_comment button .options__content,
+        .all-department-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option_comment button .options__content {
+          position: absolute;
+          top: 20px;
+          left: 0;
+          display: none;
+          list-style: none !important;
+          background: white; }
+          .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option_comment button .options__content li,
+          .all-department-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option_comment button .options__content li {
+            font-size: 12px;
+            cursor: pointer; }
+            .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option_comment button .options__content li:hover,
+            .all-department-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option_comment button .options__content li:hover {
+              background: #f1f1f1; }
+            .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option_comment button .options__content li:active,
+            .all-department-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option_comment button .options__content li:active {
+              background: #d3d3d3; }
+        .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option_comment button:hover,
+        .all-department-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option_comment button:hover {
           background: #f1f1f1; }
-        .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option button:active,
-        .all-department-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option button:active {
+          .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option_comment button:hover .options__content,
+          .all-department-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option_comment button:hover .options__content {
+            display: block; }
+        .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option_comment button:active,
+        .all-department-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option_comment button:active {
           background: #d3d3d3; }
+    .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .comment-action .btn-comment,
+    .all-department-area .news-feed-area__posts-area .post .post__react .react__action .comment-action .btn-comment {
+      outline: none;
+      cursor: pointer;
+      background: #33485c;
+      color: white; }
+      .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .comment-action .btn-comment:hover,
+      .all-department-area .news-feed-area__posts-area .post .post__react .react__action .comment-action .btn-comment:hover {
+        background: #405262; }
+      .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .comment-action .btn-comment:active,
+      .all-department-area .news-feed-area__posts-area .post .post__react .react__action .comment-action .btn-comment:active {
+        background: #33485c; }
   .news-feed-area #btn-load-more,
   .all-department-area #btn-load-more {
-    cursor: pointer; }
+    cursor: pointer;
+    visibility: hidden; }
 
 /**************
                         ^
@@ -340,22 +409,56 @@ ALL DEPARTMENT PAGE END     |
                               |
    ***************/
 /**************
+                            |
+ALL NOTIFICATION PAGE END     |  
+                            v
+   ***************/
+.all-notification-area {
+  font-size: 15px; }
+  .all-notification-area .list-notification .notification-card {
+    background: white;
+    cursor: pointer;
+    width: 100%;
+    font-weight: 600; }
+    .all-notification-area .list-notification .notification-card:hover {
+      background: #f1f1f1; }
+    .all-notification-area .list-notification .notification-card:active {
+      background: #d3d3d3; }
+    .all-notification-area .list-notification .notification-card .notification-card-content {
+      font-weight: 400; }
+
+/**************
+                              ^
+  ALL NOTIFICATION PAGE END     |  
+                              |
+   ***************/
+/**************
                       |
   ADMIN PAGE END      |  
                       v
    ***************/
-.create-account-area {
+.create-account-area,
+.create-notification-area {
   background: white;
   font-size: 15px; }
-  .create-account-area #btn-create-department-account {
+  .create-account-area #btn-create-department-account,
+  .create-account-area #btn-create-notification,
+  .create-notification-area #btn-create-department-account,
+  .create-notification-area #btn-create-notification {
     outline: none;
     cursor: pointer;
     background: #33485c;
     padding: 5px 15px;
     color: white; }
-    .create-account-area #btn-create-department-account:hover {
+    .create-account-area #btn-create-department-account:hover,
+    .create-account-area #btn-create-notification:hover,
+    .create-notification-area #btn-create-department-account:hover,
+    .create-notification-area #btn-create-notification:hover {
       background: #405262; }
-    .create-account-area #btn-create-department-account:active {
+    .create-account-area #btn-create-department-account:active,
+    .create-account-area #btn-create-notification:active,
+    .create-notification-area #btn-create-department-account:active,
+    .create-notification-area #btn-create-notification:active {
       background: #33485c; }
 
 /**************
@@ -363,3 +466,9 @@ ALL DEPARTMENT PAGE END     |
   ADMIN PAGE END      |  
                       |
    ***************/
+@media (min-width: 990px) {
+  .sticky-top-area {
+    position: -webkit-sticky;
+    /* Safari */
+    position: sticky;
+    top: 0; } }

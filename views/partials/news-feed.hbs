@@ -5,23 +5,23 @@
             <span>What's on your mind, {{user.displayName}}?</span>
         </div>
     </div>
-    <div class="action d-flex justify-content-between px-5 pt-2">
-        <button>
+    <div class="action d-flex justify-content-between px-md-5 pt-2">
+        <button id="video-post" data-toggle="modal" data-target="#postModal" class="rounded">
             <i class="fas fa-video text-danger"></i>
-            <span>Live Video</span>
+            <span>Video</span>
         </button>
-        <button>
+        <button id="photo-post" data-toggle="modal" data-target="#postModal" class="rounded">
             <i class="fas fa-images text-success"></i>
-            <span>Photo/Video</span>
+            <span>Photo</span>
         </button>
-        <button>
+        <button class="rounded">
             <i class="far fa-laugh text-warning"></i>
             <span>Feeling/Activity</span>
         </button>
     </div>
 </div>
 <div id="news-feed" class="news-feed-area__posts-area">
-    {{!-- <div class="post my-2 rounded shadow-lg">
+     {{!-- <div class="post my-2 rounded shadow-lg">
         <div class="post__header pt-2 px-3 d-flex justify-content-between">
             <div class="header__auth d-flex">
                 <img src="{{user.avatar}}" alt="avatar" class="rounded-circle">
@@ -36,8 +36,8 @@
                     <ul class="options__content p-0 m-0 border rounded shadow-lg">
                         <li class="p-2">Xóa post</li>
                     </ul>
+                </button>
             </div>
-            </button>
 
         </div>
         <div class="post__content">
@@ -45,11 +45,17 @@
                 <span>
                     Test trạng thái
                 </span>
-            </div>
-            <div class="content__img">
+            </div> <div class="content__video">
+            <iframe width="1520" height="500" 
+            src="https://www.youtube.com/embed/cGpQzHmNjHc" title="YouTube video player" 
+            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen></iframe>
+            </div> 
+            
+        <div class="content__img">
                 <img src="https://images.pexels.com/photos/132037/pexels-photo-132037.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
                     alt="img">
-            </div>
+            </div>div>
         </div>
         <div class="post__react px-3">
             <div class="react__action">
@@ -81,51 +87,26 @@
                             </span>
                             <br />
                             <span>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. A, fugiat
-                                impedit? Dignissimos esse impedit voluptates minus odio fuga,
-                                explicabo blanditiis ullam eaque quo perspiciatis! Voluptas
-                                voluptatem soluta iste, laudantium impedit aut reprehenderit
-                                excepturi nihil! Nostrum numquam reprehenderit nulla blanditiis amet
-                                recusandae incidunt ut fuga. Ab esse laborum inventore iure
-                                suscipit. Possimus recusandae non rem perferendis magni minima ex
-                                totam deleniti nostrum mollitia amet tempora, accusamus eveniet
-                                labore dicta beatae numquam reiciendis quasi fugiat incidunt debitis
-                                harum repudiandae at? Suscipit accusantium voluptate laudantium sunt
-                                explicabo vitae nesciunt architecto maxime officia perferendis.
-                                Eligendi commodi asperiores aliquid in fuga reprehenderit molestias
-                                quis. Eligendi!
-                            </span>
-                        </div>
-                        <div class="option">
-                            <button class="rounded-circle mx-2">
-                                <i class="fas fa-ellipsis-h"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="user-comment d-inline-flex py-2">
-                        <img src="{{user.avatar}}" alt="avatar" class="rounded-circle">
-                        <div class="message ml-2 px-2 py-1 rounded">
-                            <span class="user-comment__name">
-                                {{user.displayName}}
-                            </span>
-                            <br />
-                            <span>
                                 This is test message
                             </span>
                         </div>
-                        <div class="option">
+                        <div class="option_comment">
                             <button class="rounded-circle mx-2">
                                 <i class="fas fa-ellipsis-h"></i>
+                                <ul class="options__content p-0 m-0 border rounded shadow-lg">
+                                    <li class="py-2 px-3">Xóa</li>
+                                </ul>
                             </button>
                         </div>
                     </div>
                 </div>
-                <div class="comment d-flex">
-                    <input type="text" placeholder="Write a public comment" class="w-100 border m-3 p-2 rounded">
+                <div class="comment-action d-flex p-3">
+                    <input type="text" placeholder="Write a public comment" class="w-100 border  p-2 rounded">
+                    <button class="btn-comment mx-2 rounded border" data-id="">Comment</button>
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>  --}}
 </div>
 <div class="text-center py-3">
     <span id="btn-load-more" class="font-italic">

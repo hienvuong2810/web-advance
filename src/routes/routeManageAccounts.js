@@ -20,7 +20,7 @@ app.post("/register", (req, res)=>{
     // username of department to log in
     // department : array contains all department
     const {name, username, password, department} = req.body
-    Account.create({displayName: name, username: username, password: bcrypt.hashSync(password, 10), department: department, role: 2, avatar: "", class: "", faculty: ""  }, function(err, docs){
+    Account.create({displayName: name, username: username, password: bcrypt.hashSync(password, 10), department: department, role: 2, avatar: "https://www.w3schools.com/howto/img_avatar.png", class: "", faculty: ""  }, function(err, docs){
         if(err){
           return res.status(400).json({code: 400, msg: "Tạo tài khoản thất bại"})
         }else{

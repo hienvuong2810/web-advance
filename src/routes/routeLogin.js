@@ -1,7 +1,7 @@
 const express = require("express")
 const app = express.Router()
 const passport = require('passport');
-const auth = require('../../utils/auth')
+const {auth, authAdmin, authDepartment} = require('../../utils/auth')
 const authValidation = require('../validator/auth');
 const {validationResult} = require("express-validator")
 const Account = require('../db/AccountSchema');
@@ -25,7 +25,7 @@ app.get("/", auth, (req, res) => {
       case 1:
         return res.redirect('/admin')
       case 2:
-        return res.redirect('/department')
+        return res.redirect('/department-dashboard')
     }
   }
   // res.send('page login!'.concat(x))
@@ -43,7 +43,7 @@ app.get("/login", (req, res)=>{
         case 1:
           return res.redirect('/admin')
         case 2:
-          return res.redirect('/department')
+          return res.redirect('/department-dashboard')
       }
     }
     else if(req.session.user){
@@ -51,7 +51,7 @@ app.get("/login", (req, res)=>{
         case 1:
           return res.redirect('/admin')
         case 2:
-          return res.redirect('/department')
+          return res.redirect('/department-dashboard')
       }
     }
     // res.send('page login!'.concat(x))
@@ -62,16 +62,23 @@ app.get('/dashboard', auth, (req, res) => {
   res.render('dashboard', {user: req.user});
 })
 
-app.get('/admin', auth, (req,res) => {
+app.get('/admin', authAdmin, (req,res) => {
   res.render('admin', {user: req.user});
 })
 
-app.get('/department', auth, (req,res) => {
+app.get('/department-dashboard', authDepartment, (req,res) => {
   res.render('department', {user: req.user});
 })
 
 app.get('/all-notification', auth, (req,res) => {
-  res.render('notify-list', {user: req.user});
+  res.render('list-notification', {user: req.user});
+})
+app.get('/all-notification/:id', auth, (req,res) => {
+  res.render('detail-notification', {user: req.user});
+})
+
+app.get('/by-department/:id', auth, (req,res) => {
+  res.render('list-notification', {user: req.user});
 })
 
 app.get('/all-department', auth, (req,res) => {
