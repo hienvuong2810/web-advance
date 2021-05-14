@@ -26,6 +26,36 @@
     </div>
 </div>
 
+<!-- Modal edit post-->
+<div class="modal fade" id="editPostModal" tabindex="-1" role="dialog" aria-labelledby="editPostModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editPostModalLabel">Edit Post</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <textarea class="w-100 border-0" name="post-value-edit" id="post-value-edit" cols="30" rows="10"
+                    placeholder="What's on your mind, {{user.displayName}}?"></textarea>
+                <div class="sub-body my-2 py-2 border-top d-flex flex-column">
+                    <span id="sub-body-edit-post-title" class="py-2">Add photo</span>
+                    {{!-- <div class="img-container-edit">
+                        <img id="img-edit-post" src="" alt="img">
+                    </div> --}}
+                    <input name="file-img-edit" id="file-img-edit" type="file" accept="image/png, image/jpeg" />
+                    <input name="script-yb-edit" id="script-yb-edit" type="text" class="border rounded p-2 ">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="btn-edit-confirm">Edit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Modal -->
 <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel"
     aria-hidden="true">
@@ -123,6 +153,29 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary" id="btn-create-notify">Create</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="confirmDeleteCommentModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteCommentModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeleteCommentModalLabel">Post</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <span>Are you sure to delete this comment?</span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="btn-confirm-delete-comment">Confirm</button>
             </div>
         </div>
     </div>

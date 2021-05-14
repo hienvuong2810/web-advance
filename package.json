@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --inspect index.js",
-    "watch": "node-sass --watch public/style.scss --output public/",
+    "watch": "node-sass --watch public/style.scss --output public/stylesheets",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -8,7 +8,8 @@ const PostSchema = new Schema({
     files: Array,
     comment:[
         {type: Schema.Types.ObjectId, ref: 'Comment'}
-    ]
+    ],
+    updateAt: {type: Date}
 })
 
 let Posts = mongoose.model("Post", PostSchema, "Posts")

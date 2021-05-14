@@ -9,9 +9,7 @@ app.post("/add", (req, res)=>{
     console.log(postId, content)
     let idAuthor = req?.user?._id ? req.user._id : req.session.user._id
     Comment.create({author: idAuthor, content: content, createAt: getDate, commentAt: postId}, function(err, docs){
-        if(err){
-            return res.status(500).json({code: 500, msg: "Lỗi comment"})
-        }else{
+        if(docs){
             Post.findOneAndUpdate(
                 {
                     _id: postId
@@ -20,14 +18,19 @@ app.post("/add", (req, res)=>{
                     $push: {
                         comment: docs._id
                     }
-                }, function(err, success){
-                    if(err){
-                        return res.status(500).json({code: 500, msg: "Lỗi post " + err})
-                    }else{
-                        return res.status(200).json({code: 200, msg: "Comment thành công"})
+                },
+                {
+                    returnOriginal: false
+                }, 
+                (error, success) =>{
+                    if(success){
+                        return res.status(200).json({code: 200, msg: "Comment thành công", data: success})
                     }
-                }
-            )
+                    return res.status(500).json({code: 500, msg: "Lỗi post " + error})
+                    
+            }).populate('author').populate({path: 'comment', populate: 'author'})
+        }else {
+            return res.status(500).json({code: 500, msg: "Lỗi comment"})
         }
     })
 })
@@ -54,17 +57,21 @@ app.post("/update", (req, res)=>{
 
 app.post("/delete", (req, res)=>{
     const {commentId} = req.body
-
+    const idAuthor = req?.user?._id ? req.user._id : req.session.user._id;
     Comment.findOneAndDelete(
         {
             _id: commentId,
-            author: req.user._id
+            author: idAuthor
         },
         function(err, docs){
-            if(err){
+            console.log(docs)
+            if(docs){
+                return res.status(200).json({code: 200, msg: "Xóa comment thành công"})
+            }
+            else if(err){
                 return res.status(500).json({code: 500, msg: "Lỗi xóa " + err})
             }else{
-                return res.status(200).json({code: 200, msg: "Xóa comment thành công"})
+                return res.status(200).json({code: 400, msg: "Lỗi xóa"})
             }            
         }
     )

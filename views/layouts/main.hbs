@@ -20,13 +20,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossorigin="anonymous" />
-    <link rel="stylesheet" href="../../public/style.css">
+    <link rel="stylesheet" href="../../public/stylesheets/style.css">
 </head>
 
 <body>
     <div>
         {{>header}}
-        <div id="div-content-right">
+        <div id="div-content-right" class="hide-nav-responsive">
             {{{body}}}
 
             <div id="notification-success" class="fixed-bottom rounded m-2 p-2 bg-success text-white">
@@ -44,7 +44,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"
             integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA=="
             crossorigin="anonymous"></script>
-        <script src="../../public/main.js"></script>
+        <script src="../../public/javascripts/main.js"></script>
 </body>
 
 </html>

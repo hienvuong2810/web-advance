@@ -81,7 +81,7 @@ app.post("/delete", (req, res)=>{
 //get notification with pagination
 app.get("/list/notification/:page", async(req, res)=>{
     const {page = 1, limit = 10} = req.params;
-    let result = await Notification.find().limit(limit * 1).skip((page - 1) * limit).populate('author').populate('department').select(["-__v"]);
+    let result = await Notification.find().sort({createAt: -1}).limit(limit * 1).skip((page - 1) * limit).populate('author').populate('department').select(["-__v"]);
     return res.status(200).json({code: 200, msg: result})
 })
 
@@ -99,7 +99,7 @@ app.get("/list/department/:id",(req, res)=>{
         else{
             return res.status(200).json({code: 200, msg: docs})
         }
-    }).populate('author').populate('department')
+    }).sort({createAt: -1}).populate('author').populate('department')
     // res.json({tata: 'hello'})
 })
 

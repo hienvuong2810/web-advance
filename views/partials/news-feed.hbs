@@ -1,8 +1,8 @@
 <div class="news-feed-area__header p-3 border rounded shadow-sm">
     <div class="status d-flex border-bottom pb-3">
         <img src="{{user.avatar}}" alt="avatar" class="rounded-circle">
-        <div id="status-post" class="w-100 border mx-2 px-3 py-2" data-toggle="modal" data-target="#postModal">
-            <span>What's on your mind, {{user.displayName}}?</span>
+        <div id="status-post" class="w-100 border mx-2 px-3 py-2 ellipsis" data-toggle="modal" data-target="#postModal">
+            <span class="main-script">What's on your mind, {{user.displayName}}?</span>
         </div>
     </div>
     <div class="action d-flex justify-content-between px-md-5 pt-2">
@@ -16,7 +16,7 @@
         </button>
         <button class="rounded">
             <i class="far fa-laugh text-warning"></i>
-            <span>Feeling/Activity</span>
+            <span>Feeling</span>
         </button>
     </div>
 </div>
