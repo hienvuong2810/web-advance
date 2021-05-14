@@ -466,13 +466,25 @@ $(document).ready(() => {
         const { idcmt, idpost } = e.target.dataset;
         $("#confirmDeleteCommentModal").modal("show");
         $("#btn-confirm-delete-comment").attr("data-id", idcmt);
+        $("#btn-confirm-delete-comment").attr("data-idpost", idpost);
       });
     }
 
     $("#btn-confirm-delete-comment").click((e) => {
-      const { id } = e.target.dataset;
+      const { id, idpost } = e.target.dataset;
+     
       deleteCommentPost(id).then((res) => {
         if (res.code == 200) {
+
+          let totalComment = $(`#total-comment-${idpost}`).text().split(' ');
+          totalComment[0] = totalComment[0]*1 - 1;
+          if(totalComment[0] <= 1){
+            totalComment[1] = 'comment'
+          }else{
+            totalComment[1] = 'comments'
+          }
+          let newTotal = totalComment.join(' ');
+          $(`#total-comment-${idpost}`).text(newTotal)
           notifySuccess(res.msg);
           $(`#user-comment-${id}`).remove();
           $("#confirmDeleteCommentModal").modal("hide");
