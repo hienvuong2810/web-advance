@@ -60,8 +60,7 @@ mongoose.connect(dbConnectString, {
     useCreateIndex: true
 });
 
-
-
-http.listen(process.env.PORT, (req, res)=>{
-    console.log("Running http://localhost:3000")
+let port = process.env.PORT || 3000
+http.listen(port, (req, res)=>{
+    console.log("Running http://localhost:" + port)
 })
