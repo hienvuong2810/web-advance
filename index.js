@@ -62,6 +62,6 @@ mongoose.connect(dbConnectString, {
 
 
 
-http.listen(3000, (req, res)=>{
+http.listen(process.env.PORT, (req, res)=>{
     console.log("Running http://localhost:3000")
 })
