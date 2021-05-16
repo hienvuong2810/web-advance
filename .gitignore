@@ -1,1 +1,7 @@
 node_modules/
+
+public/style.scss
+
+images/*
+
+views/test.ejs

@@ -1,0 +1,506 @@
+body {
+  font-size: 13px;
+  background-color: #f0f2f5; }
+
+.mt-04rem {
+  margin-top: 0.4rem !important; }
+
+.fixed-end {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: 1030; }
+
+@keyframes content-right-transform {
+  from {
+    margin-left: 250px; }
+  to {
+    margin-left: 60px; } }
+
+#div-content-right {
+  margin-left: 250px; }
+  #div-content-right.hide-nav {
+    margin-left: 60px;
+    animation: content-right-transform 0.2s ease-in-out; }
+
+#notification-success,
+#notification-error {
+  width: fit-content !important;
+  min-width: 200px; }
+
+#notification-notify {
+  width: fit-content !important;
+  min-width: 200px; }
+  #notification-notify a {
+    font-weight: 700; }
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+span.user-select-n {
+  -webkit-user-select: none !important;
+  /* Chrome all / Safari all */
+  -moz-user-select: none !important;
+  /* Firefox all */
+  -ms-user-select: none !important;
+  /* IE 10+ */
+  user-select: none !important; }
+
+/**************
+                    |
+ LOGIN PAGE START   |  
+                    V
+ ***************/
+.login-area {
+  margin-top: 15vh;
+  background: white; }
+
+.google-btn {
+  width: 184px;
+  height: 42px;
+  background-color: #4285f4;
+  border-radius: 2px;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+  align-self: center;
+  cursor: pointer; }
+  .google-btn .google-icon-wrapper {
+    position: absolute;
+    margin-top: 1px;
+    margin-left: 1px;
+    width: 40px;
+    height: 40px;
+    border-radius: 2px;
+    background-color: white; }
+  .google-btn .google-icon {
+    position: absolute;
+    margin-top: 11px;
+    margin-left: 11px;
+    width: 18px;
+    height: 18px; }
+  .google-btn .btn-text {
+    float: right;
+    margin: 11px 11px 0 0;
+    color: white;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    font-family: "Roboto"; }
+  .google-btn:hover {
+    box-shadow: 0 0 6px #4285f4; }
+  .google-btn:active {
+    background: #1669f2; }
+
+/**************
+                ^
+ LOGIN PAGE END |  
+                |
+ ***************/
+/**************
+                        |
+ MENU PARTIAL START     |  
+                        V
+ ***************/
+@keyframes navbar-transform {
+  from {
+    width: 250px; }
+  to {
+    width: 60px; } }
+
+.navbar-side {
+  max-width: 250px;
+  width: 250px;
+  background: #33485c;
+  height: 100vh;
+  color: white;
+  padding-right: 0px !important; }
+  .navbar-side.hide-nav {
+    width: 60px;
+    animation: navbar-transform 0.2s ease-in-out; }
+    .navbar-side.hide-nav .navbar-side__title-menu span {
+      display: none; }
+    .navbar-side.hide-nav .navbar-side__title-menu #btn-hide-navbar {
+      left: 0; }
+    .navbar-side.hide-nav .navbar-side__auth .auth__btn-logout,
+    .navbar-side.hide-nav .navbar-side__auth .auth__name {
+      display: none; }
+    .navbar-side.hide-nav .navbar-side__select li {
+      text-align: center;
+      font-size: 20px; }
+      .navbar-side.hide-nav .navbar-side__select li span {
+        display: none; }
+  .navbar-side .navbar-side__title-menu {
+    background: #2f4355;
+    text-transform: uppercase;
+    padding: 0.6rem 10px 5px;
+    font-weight: bold;
+    font-size: 25px;
+    height: 60px; }
+    .navbar-side .navbar-side__title-menu #btn-hide-navbar {
+      position: absolute;
+      right: 0;
+      top: 0;
+      background: #33485c;
+      font-size: 22px;
+      padding: 0 15px;
+      height: 100%;
+      width: 60px;
+      cursor: pointer; }
+      .navbar-side .navbar-side__title-menu #btn-hide-navbar i {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%); }
+      .navbar-side .navbar-side__title-menu #btn-hide-navbar:hover {
+        background-color: #3b4c5c; }
+      .navbar-side .navbar-side__title-menu #btn-hide-navbar:active {
+        background-color: #44515e; }
+  .navbar-side .navbar-side__auth {
+    padding: 10px 5px;
+    border: 1px solid #4b5b6b;
+    border-left: none;
+    border-right: none; }
+    .navbar-side .navbar-side__auth .auth__avatar {
+      width: 50px;
+      height: 50px; }
+    .navbar-side .navbar-side__auth .auth__name,
+    .navbar-side .navbar-side__auth .auth__btn-logout {
+      font-size: 15px;
+      transform: translateY(25%); }
+    .navbar-side .navbar-side__auth .auth__btn-logout {
+      cursor: pointer; }
+      .navbar-side .navbar-side__auth .auth__btn-logout:hover {
+        color: #dadada; }
+  .navbar-side .navbar-side__select ul {
+    list-style: none; }
+    .navbar-side .navbar-side__select ul li {
+      border: 1px solid #4b5b6b;
+      border-left: none;
+      border-right: none;
+      cursor: pointer; }
+      .navbar-side .navbar-side__select ul li.active {
+        background-color: #e74c3c; }
+      .navbar-side .navbar-side__select ul li:hover {
+        background-color: #e74c3c; }
+      .navbar-side .navbar-side__select ul li i {
+        min-width: 20px; }
+
+/**************
+                    ^
+   MENU PARTIAL END |  
+                    |
+   ***************/
+/**************
+                        |
+  DASHBOARD PAGE START  |  
+                        V
+   ***************/
+#postModal .modal-body textarea,
+#editPostModal .modal-body textarea {
+  outline: none; }
+
+#postModal .modal-body .sub-body .img-container-edit img#img-edit-post,
+#editPostModal .modal-body .sub-body .img-container-edit img#img-edit-post {
+  width: 20%; }
+
+.news-feed-area,
+.all-department-area {
+  font-size: 15px; }
+  .news-feed-area .news-feed-area__header,
+  .all-department-area .news-feed-area__header {
+    background-color: white; }
+    .news-feed-area .news-feed-area__header .status img,
+    .all-department-area .news-feed-area__header .status img {
+      width: 50px;
+      height: 50px; }
+    .news-feed-area .news-feed-area__header .status #status-post,
+    .all-department-area .news-feed-area__header .status #status-post {
+      border-radius: 50px;
+      padding-top: 0.8rem !important;
+      cursor: pointer; }
+      .news-feed-area .news-feed-area__header .status #status-post span,
+      .all-department-area .news-feed-area__header .status #status-post span {
+        color: #616161; }
+    .news-feed-area .news-feed-area__header .action button,
+    .all-department-area .news-feed-area__header .action button {
+      border: none;
+      background-color: transparent;
+      outline: none;
+      cursor: pointer;
+      padding: 10px;
+      width: 100%; }
+      .news-feed-area .news-feed-area__header .action button i,
+      .all-department-area .news-feed-area__header .action button i {
+        font-size: 15px; }
+      .news-feed-area .news-feed-area__header .action button span,
+      .all-department-area .news-feed-area__header .action button span {
+        padding: 0 5px; }
+      .news-feed-area .news-feed-area__header .action button:hover,
+      .all-department-area .news-feed-area__header .action button:hover {
+        background: #f1f1f1; }
+      .news-feed-area .news-feed-area__header .action button:active,
+      .all-department-area .news-feed-area__header .action button:active {
+        background: #d3d3d3; }
+  .news-feed-area .news-feed-area__posts-area .post,
+  .all-department-area .news-feed-area__posts-area .post {
+    background: white; }
+    .news-feed-area .news-feed-area__posts-area .post .post__header .header__auth img,
+    .all-department-area .news-feed-area__posts-area .post .post__header .header__auth img {
+      height: 50px;
+      width: 50px; }
+    .news-feed-area .news-feed-area__posts-area .post .post__header .header__auth .auth__name,
+    .all-department-area .news-feed-area__posts-area .post .post__header .header__auth .auth__name {
+      font-weight: 600;
+      cursor: pointer; }
+    .news-feed-area .news-feed-area__posts-area .post .post__header .header__auth .auth__date,
+    .all-department-area .news-feed-area__posts-area .post .post__header .header__auth .auth__date {
+      font-size: 13px; }
+    .news-feed-area .news-feed-area__posts-area .post .post__header .header__option,
+    .all-department-area .news-feed-area__posts-area .post .post__header .header__option {
+      position: relative; }
+      .news-feed-area .news-feed-area__posts-area .post .post__header .header__option button,
+      .all-department-area .news-feed-area__posts-area .post .post__header .header__option button {
+        background-color: transparent;
+        outline: none;
+        border: none;
+        cursor: pointer; }
+        .news-feed-area .news-feed-area__posts-area .post .post__header .header__option button .options__content,
+        .all-department-area .news-feed-area__posts-area .post .post__header .header__option button .options__content {
+          position: absolute;
+          top: 30%;
+          right: 0;
+          display: none;
+          list-style: none !important;
+          width: 100px;
+          background: white; }
+          .news-feed-area .news-feed-area__posts-area .post .post__header .header__option button .options__content li,
+          .all-department-area .news-feed-area__posts-area .post .post__header .header__option button .options__content li {
+            cursor: pointer; }
+            .news-feed-area .news-feed-area__posts-area .post .post__header .header__option button .options__content li:hover,
+            .all-department-area .news-feed-area__posts-area .post .post__header .header__option button .options__content li:hover {
+              background: #f1f1f1; }
+            .news-feed-area .news-feed-area__posts-area .post .post__header .header__option button .options__content li:active,
+            .all-department-area .news-feed-area__posts-area .post .post__header .header__option button .options__content li:active {
+              background: #d3d3d3; }
+        .news-feed-area .news-feed-area__posts-area .post .post__header .header__option button:hover,
+        .all-department-area .news-feed-area__posts-area .post .post__header .header__option button:hover {
+          background: #f1f1f1; }
+          .news-feed-area .news-feed-area__posts-area .post .post__header .header__option button:hover .options__content,
+          .all-department-area .news-feed-area__posts-area .post .post__header .header__option button:hover .options__content {
+            display: block; }
+        .news-feed-area .news-feed-area__posts-area .post .post__header .header__option button:active,
+        .all-department-area .news-feed-area__posts-area .post .post__header .header__option button:active {
+          background: #d3d3d3; }
+    .news-feed-area .news-feed-area__posts-area .post .post__content .content__img,
+    .all-department-area .news-feed-area__posts-area .post .post__content .content__img {
+      height: 500px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center; }
+      .news-feed-area .news-feed-area__posts-area .post .post__content .content__img img,
+      .all-department-area .news-feed-area__posts-area .post .post__content .content__img img {
+        cursor: pointer;
+        background-size: cover; }
+    .news-feed-area .news-feed-area__posts-area .post .post__content .content__video,
+    .all-department-area .news-feed-area__posts-area .post .post__content .content__video {
+      height: 500px;
+      display: flex;
+      justify-content: center; }
+    .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .react button,
+    .all-department-area .news-feed-area__posts-area .post .post__react .react__action .react button {
+      width: 100%;
+      padding: 5px;
+      background: transparent;
+      border: none;
+      outline: none;
+      cursor: pointer; }
+      .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .react button:hover,
+      .all-department-area .news-feed-area__posts-area .post .post__react .react__action .react button:hover {
+        background: #f1f1f1; }
+      .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .react button:active,
+      .all-department-area .news-feed-area__posts-area .post .post__react .react__action .react button:active {
+        background: #d3d3d3; }
+    .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment,
+    .all-department-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment {
+      display: inline; }
+      .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment img,
+      .all-department-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment img {
+        width: 40px;
+        height: 40px; }
+      .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .message,
+      .all-department-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .message {
+        background: #f0f2f5;
+        overflow-wrap: anywhere; }
+        .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .message .user-comment__name,
+        .all-department-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .message .user-comment__name {
+          font-weight: 600; }
+      .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option_comment button,
+      .all-department-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option_comment button {
+        position: relative;
+        background-color: transparent;
+        outline: none;
+        border: none;
+        cursor: pointer; }
+        .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option_comment button .options__content,
+        .all-department-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option_comment button .options__content {
+          position: absolute;
+          top: 20px;
+          left: 0;
+          display: none;
+          list-style: none !important;
+          background: white; }
+          .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option_comment button .options__content li,
+          .all-department-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option_comment button .options__content li {
+            font-size: 12px;
+            cursor: pointer; }
+            .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option_comment button .options__content li:hover,
+            .all-department-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option_comment button .options__content li:hover {
+              background: #f1f1f1; }
+            .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option_comment button .options__content li:active,
+            .all-department-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option_comment button .options__content li:active {
+              background: #d3d3d3; }
+        .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option_comment button:hover,
+        .all-department-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option_comment button:hover {
+          background: #f1f1f1; }
+          .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option_comment button:hover .options__content,
+          .all-department-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option_comment button:hover .options__content {
+            display: block; }
+        .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option_comment button:active,
+        .all-department-area .news-feed-area__posts-area .post .post__react .react__action .comments-post .user-comment .option_comment button:active {
+          background: #d3d3d3; }
+    .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .comment-action .btn-comment,
+    .all-department-area .news-feed-area__posts-area .post .post__react .react__action .comment-action .btn-comment {
+      outline: none;
+      cursor: pointer;
+      background: #33485c;
+      color: white; }
+      .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .comment-action .btn-comment:hover,
+      .all-department-area .news-feed-area__posts-area .post .post__react .react__action .comment-action .btn-comment:hover {
+        background: #405262; }
+      .news-feed-area .news-feed-area__posts-area .post .post__react .react__action .comment-action .btn-comment:active,
+      .all-department-area .news-feed-area__posts-area .post .post__react .react__action .comment-action .btn-comment:active {
+        background: #33485c; }
+  .news-feed-area #btn-load-more,
+  .all-department-area #btn-load-more {
+    cursor: pointer;
+    visibility: hidden; }
+
+/**************
+                        ^
+  DASHBOARD PAGE END    |  
+                        |
+   ***************/
+/**************
+                            |
+ALL DEPARTMENT PAGE END     |  
+                            v
+   ***************/
+.all-department-area {
+  font-size: 15px; }
+  .all-department-area .list-department .department-card {
+    background: white;
+    cursor: pointer;
+    width: 100%;
+    font-weight: 600; }
+    .all-department-area .list-department .department-card:hover {
+      background: #f1f1f1; }
+    .all-department-area .list-department .department-card:active {
+      background: #d3d3d3; }
+
+/**************
+                              ^
+  ALL DEPARTMENT PAGE END     |  
+                              |
+   ***************/
+/**************
+                            |
+ALL NOTIFICATION PAGE END     |  
+                            v
+   ***************/
+.all-notification-area {
+  font-size: 15px; }
+  .all-notification-area .list-notification .notification-card {
+    background: white;
+    cursor: pointer;
+    width: 100%;
+    font-weight: 600; }
+    .all-notification-area .list-notification .notification-card:hover {
+      background: #f1f1f1; }
+    .all-notification-area .list-notification .notification-card:active {
+      background: #d3d3d3; }
+    .all-notification-area .list-notification .notification-card .notification-card-content {
+      font-weight: 400; }
+
+/**************
+                              ^
+  ALL NOTIFICATION PAGE END     |  
+                              |
+   ***************/
+/**************
+                      |
+  ADMIN PAGE END      |  
+                      v
+   ***************/
+.create-account-area,
+.create-notification-area {
+  background: white;
+  font-size: 15px; }
+  .create-account-area #btn-create-department-account,
+  .create-account-area #btn-create-notification,
+  .create-notification-area #btn-create-department-account,
+  .create-notification-area #btn-create-notification {
+    outline: none;
+    cursor: pointer;
+    background: #33485c;
+    padding: 5px 15px;
+    color: white; }
+    .create-account-area #btn-create-department-account:hover,
+    .create-account-area #btn-create-notification:hover,
+    .create-notification-area #btn-create-department-account:hover,
+    .create-notification-area #btn-create-notification:hover {
+      background: #405262; }
+    .create-account-area #btn-create-department-account:active,
+    .create-account-area #btn-create-notification:active,
+    .create-notification-area #btn-create-department-account:active,
+    .create-notification-area #btn-create-notification:active {
+      background: #33485c; }
+
+/**************
+                      ^
+  ADMIN PAGE END      |  
+                      |
+   ***************/
+@media (min-width: 990px) {
+  .sticky-top-area {
+    position: -webkit-sticky;
+    /* Safari */
+    position: sticky;
+    top: 10px; } }
+
+@media (max-width: 700px) {
+  #div-content-right {
+    margin-left: 250px; }
+    #div-content-right.hide-nav-responsive {
+      margin-left: 60px;
+      animation: content-right-transform 0.2s ease-in-out; }
+  .navbar-side.hide-nav-responsive {
+    width: 60px;
+    animation: navbar-transform 0.2s ease-in-out; }
+    .navbar-side.hide-nav-responsive .navbar-side__title-menu span {
+      display: none; }
+    .navbar-side.hide-nav-responsive .navbar-side__title-menu #btn-hide-navbar {
+      left: 0; }
+    .navbar-side.hide-nav-responsive .navbar-side__auth .auth__btn-logout,
+    .navbar-side.hide-nav-responsive .navbar-side__auth .auth__name {
+      display: none; }
+    .navbar-side.hide-nav-responsive .navbar-side__select li {
+      text-align: center;
+      font-size: 20px; }
+      .navbar-side.hide-nav-responsive .navbar-side__select li span {
+        display: none; } }
+
+@media (max-width: 430px) {
+  .news-feed-area__header .action button span {
+    display: none; } }

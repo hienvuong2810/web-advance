@@ -1,0 +1,182 @@
+<!-- Modal -->
+<div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="postModalLabel">Post</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <textarea class="w-100 border-0" name="post-value" id="post-value" cols="30" rows="10"
+                    placeholder="What's on your mind, {{user.displayName}}?"></textarea>
+                <div  class="sub-body my-2 py-2 border-top d-flex flex-column">
+                    <span id="sub-body-post-title" class="py-2">Add photo</span>
+                    {{!-- <input name="file-img" id="file-img" type="file" multiple accept="image/png, image/jpeg" /> --}}
+                    <input name="file-img" id="file-img" type="file" accept="image/png, image/jpeg" />
+                    <input name="script-yb" id="script-yb" type="text" class="border rounded p-2 ">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="btn-close-post" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="btn-post">Post</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal edit post-->
+<div class="modal fade" id="editPostModal" tabindex="-1" role="dialog" aria-labelledby="editPostModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editPostModalLabel">Edit Post</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <textarea class="w-100 border-0" name="post-value-edit" id="post-value-edit" cols="30" rows="10"
+                    placeholder="What's on your mind, {{user.displayName}}?"></textarea>
+                <div class="sub-body my-2 py-2 border-top d-flex flex-column">
+                    <span id="sub-body-edit-post-title" class="py-2">Add photo</span>
+                    {{!-- <div class="img-container-edit">
+                        <img id="img-edit-post" src="" alt="img">
+                    </div> --}}
+                    <input name="file-img-edit" id="file-img-edit" type="file" accept="image/png, image/jpeg" />
+                    <input name="script-yb-edit" id="script-yb-edit" type="text" class="border rounded p-2 ">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="btn-edit-confirm">Edit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmModalLabel">Post</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <span>Are you sure to delete this post?</span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="btn-confirm">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="createAccountModal" tabindex="-1" role="dialog" aria-labelledby="createAccountModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createAccountModalLabel">Create Account</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <label for="name-create-account">Name (display):</label>
+                <input type="text" name="name-create-account" id="name-create-account"
+                    class="w-100 mb-2 rounded p-2 border">
+                <div class="row">
+                    <div class="col-6">
+                        <label for="username-create-account">Username:</label>
+                        <input type="text" name="username-create-account" id="username-create-account"
+                            class="w-100 mb-2 rounded p-2 border">
+                    </div>
+                    <div class="col-6">
+                        <label for="password-create-account">Password:</label>
+                        <input type="password" name="password-create-account" id="password-create-account"
+                            class="w-100 mb-2 rounded p-2 border">
+                    </div>
+                </div>
+
+                <label>Departments</label>
+                <br />
+                {{!-- <div id="department-select-area" class="d-flex flex-wrap justify-content-between">
+
+                </div> --}}
+                <div id="department-select-area" class="row">
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="btn-create-account">Create</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="createNotifyModal" tabindex="-1" role="dialog" aria-labelledby="createNotifyModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createNotifyModalLabel">Create Notification</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <label for="title-notification-create-notify">Title:</label>
+                <input type="text" name="title-notification-create-notify" id="title-notification-create-notify"
+                    class="w-100 mb-2 rounded p-2 border">
+                <label for="content-notification-create-notify">Content:</label>
+                <textarea type="text" name="content-notification-create-notify" id="content-notification-create-notify"
+                    class="w-100 mb-2 rounded p-2 border" rows="5"></textarea>
+                <label for="department-notification-create-notify">Department:</label>
+                <select name="department-notification-create-notify" id="department-notification-create-notify"
+                    class="w-100 mb-2 rounded p-2 border">
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="btn-create-notify">Create</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="confirmDeleteCommentModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteCommentModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeleteCommentModalLabel">Post</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <span>Are you sure to delete this comment?</span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="btn-confirm-delete-comment">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>

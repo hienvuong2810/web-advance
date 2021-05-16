@@ -1,0 +1,115 @@
+<div class="news-feed-area__header p-3 border rounded shadow-sm">
+    <div class="status d-flex border-bottom pb-3">
+        <img src="{{user.avatar}}" alt="avatar" class="rounded-circle">
+        <div id="status-post" class="w-100 border mx-2 px-3 py-2 ellipsis" data-toggle="modal" data-target="#postModal">
+            <span class="main-script">What's on your mind, {{user.displayName}}?</span>
+        </div>
+    </div>
+    <div class="action d-flex justify-content-between px-md-5 pt-2">
+        <button id="video-post" data-toggle="modal" data-target="#postModal" class="rounded">
+            <i class="fas fa-video text-danger"></i>
+            <span>Video</span>
+        </button>
+        <button id="photo-post" data-toggle="modal" data-target="#postModal" class="rounded">
+            <i class="fas fa-images text-success"></i>
+            <span>Photo</span>
+        </button>
+        <button class="rounded">
+            <i class="far fa-laugh text-warning"></i>
+            <span>Feeling</span>
+        </button>
+    </div>
+</div>
+<div id="news-feed" class="news-feed-area__posts-area">
+     {{!-- <div class="post my-2 rounded shadow-lg">
+        <div class="post__header pt-2 px-3 d-flex justify-content-between">
+            <div class="header__auth d-flex">
+                <img src="{{user.avatar}}" alt="avatar" class="rounded-circle">
+                <div class="d-flex flex-column px-2 py-1">
+                    <span class="auth__name">{{user.displayName}}</span>
+                    <span class="auth__date">December 23, 2021</span>
+                </div>
+            </div>
+            <div class="header__option">
+                <button class="rounded-circle">
+                    <i class="fas fa-ellipsis-h"></i>
+                    <ul class="options__content p-0 m-0 border rounded shadow-lg">
+                        <li class="p-2">Xóa post</li>
+                    </ul>
+                </button>
+            </div>
+
+        </div>
+        <div class="post__content">
+            <div class="content__text py-2 px-3">
+                <span>
+                    Test trạng thái
+                </span>
+            </div> <div class="content__video">
+            <iframe width="1520" height="500" 
+            src="https://www.youtube.com/embed/cGpQzHmNjHc" title="YouTube video player" 
+            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen></iframe>
+            </div> 
+            
+        <div class="content__img">
+                <img src="https://images.pexels.com/photos/132037/pexels-photo-132037.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+                    alt="img">
+            </div>div>
+        </div>
+        <div class="post__react px-3">
+            <div class="react__action">
+                <div class="quantity py-2 d-flex justify-content-between">
+                    <div class="like">
+                        <i class="far fa-thumbs-up"></i>
+                        <span class="mx-2">11</span>
+                    </div>
+                    <div class="comment">
+                        <span class="">11 comments</span>
+                    </div>
+                </div>
+                <div class="react border-bottom border-top d-flex justify-content-center">
+                    <button>
+                        <i class="far fa-thumbs-up"></i>
+                        <span class="mx-2">Like</span>
+                    </button>
+                    <button>
+                        <i class="far fa-comment-alt"></i>
+                        <span class="mx-2">Comment</span>
+                    </button>
+                </div>
+                <div class="comments-post d-flex flex-column">
+                    <div class="user-comment d-inline-flex py-2">
+                        <img src="{{user.avatar}}" alt="avatar" class="rounded-circle">
+                        <div class="message ml-2 px-2 py-1 rounded">
+                            <span class="user-comment__name">
+                                {{user.displayName}}
+                            </span>
+                            <br />
+                            <span>
+                                This is test message
+                            </span>
+                        </div>
+                        <div class="option_comment">
+                            <button class="rounded-circle mx-2">
+                                <i class="fas fa-ellipsis-h"></i>
+                                <ul class="options__content p-0 m-0 border rounded shadow-lg">
+                                    <li class="py-2 px-3">Xóa</li>
+                                </ul>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="comment-action d-flex p-3">
+                    <input type="text" placeholder="Write a public comment" class="w-100 border  p-2 rounded">
+                    <button class="btn-comment mx-2 rounded border" data-id="">Comment</button>
+                </div>
+            </div>
+        </div>
+    </div>  --}}
+</div>
+<div class="text-center py-3">
+    <span id="btn-load-more" class="font-italic">
+        <u>Load more</u>
+    </span>
+</div>

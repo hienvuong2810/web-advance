@@ -1,0 +1,22 @@
+<div class="container">
+    <h1 class="mb-3 text-uppercase">Dashboard Admin</h1>
+    <div class="row flex-row-reverse">
+        <div class="col-12 col-lg-4">
+            <div class="sticky-top-area">
+                <div class="create-account-area border rounded shadow p-3 mb-2">
+                    <h3 class="text-capitalize">
+                        department account
+                    </h3>
+                    <button id="btn-create-department-account" class="rounded mt-2" data-toggle="modal"
+                        data-target="#createAccountModal">
+                        Create
+                    </button>
+                </div>
+                {{>notify-card}}
+            </div>
+        </div>
+        <div class="news-feed-area col-12 col-lg-8">
+            {{>news-feed}}
+        </div>
+    </div>
+</div>
