@@ -8,7 +8,7 @@ $(document).ready(() => {
   //   }
   // });
   //Fire it when the page first loads:
-  const host = "http://localhost:3000";
+  const host = "https://tdtu-notify.herokuapp.com";
   $("#notification-success").hide();
   $("#notification-error").hide();
 

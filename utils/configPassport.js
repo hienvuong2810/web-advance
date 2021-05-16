@@ -12,7 +12,7 @@ passport.deserializeUser(function(user, done) {
 passport.use(new GoogleStrategy({
     clientID: "83932345290-86g98vt5n8n3063r18s5mpvs34v71pgv.apps.googleusercontent.com",
     clientSecret: "xjGVTWUo8WgUTLuXyRdPJFq0",
-    callbackURL: "http://localhost:3000/google/callback"
+    callbackURL: "https://tdtu-notify.herokuapp.com/google/callback"
   },
   function(accessToken, refreshToken, profile, done) {
     if(profile._json.email.includes("@student.tdtu.edu.vn")){
