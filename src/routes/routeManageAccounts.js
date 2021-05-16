@@ -31,7 +31,6 @@ app.post("/register", (req, res)=>{
 
 
 app.get("/update",(req, res)=>{
-    console.log(req.user)
     if(req.user.role == 0){
       return res.send("student")
     } 

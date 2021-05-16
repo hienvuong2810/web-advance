@@ -24,16 +24,8 @@ app.post("/createPost",async (req, res)=> {
             arrImage.push(element.filename)
         });
     }
-    //if author is student
-    // if(req.user.role == 0 || req.sess.user.role == 0){
     let idAuthor = req?.user?._id ? req.user._id : req.session.user._id
     const ytbId = YouTubeGetID(youtubeUrl);
-    // if(req?.user?._id){
-    //     idAuthor = req.user._id
-    // }else{
-    //     idAuthor = 
-    // }
-    console.log(req)
     Posts.create({
         author :idAuthor,
         content: youtubeUrl ? content + '---youtubebreakurl---' + ytbId : content,
@@ -58,7 +50,6 @@ app.post("/createPost",async (req, res)=> {
 //update post
 app.post("/updatePost", (req, res)=>{
     const {id, content, department, youtubeUrl} = req.body
-    console.log(id, content, department, youtubeUrl)
     let arrImage = []
     if(req.files["image"] != undefined){
         req.files["image"].forEach(element => {
@@ -98,7 +89,6 @@ function YouTubeGetID(url){
 //delete post
 app.post("/deletePost", (req, res)=>{
     const {deleteId} = req.body
-    console.log(req)
     
     let idAuthor = req?.user?._id ? req.user._id : req.session.user._id
     Post.findOneAndDelete(

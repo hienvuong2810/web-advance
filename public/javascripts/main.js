@@ -64,7 +64,6 @@ $(document).ready(() => {
       })
         .then((data) => data.json())
         .then((res) => {
-          console.log(res);
           if (res.code == 200) {
             location.pathname = "/";
           } else {
@@ -144,7 +143,6 @@ $(document).ready(() => {
 
     const queryId = location.search?.replace("?idPost=", "");
     if (queryId) {
-      console.log(queryId);
       getPostByIdUser(queryId);
     } else {
       getAllPost();
@@ -195,7 +193,6 @@ $(document).ready(() => {
         .then((res) => {
           if (res.code == 200) {
             allPosts = res.msg;
-            console.log(allPosts);
             updatePost(allPosts, reset);
             activatedDeletePost();
             activatedNameClick();
@@ -207,7 +204,6 @@ $(document).ready(() => {
     }
 
     function getAllPost(reset = true) {
-      console.log("get posts");
       const url = host + "/post/getPost/" + pagePost;
       fetch(url, {
         method: "GET",
@@ -216,7 +212,6 @@ $(document).ready(() => {
         .then((res) => {
           if (res.code == 200) {
             allPosts = res.msg;
-            console.log(allPosts);
             updatePost(allPosts, reset);
             activatedDeletePost();
             activatedNameClick();
@@ -398,7 +393,6 @@ $(document).ready(() => {
 
         if (commentValue.trim() !== "") {
           postCommentPost(id, commentValue).then((res) => {
-            console.log(res);
             if (res.code == 200) {
               notifySuccess(res.msg);
               updateOnlyCommentElement(res.data);
@@ -541,7 +535,6 @@ $(document).ready(() => {
           }else{
             notifyError(res.msg);
           }
-          console.log(res)
         })
       })
     }
@@ -549,7 +542,6 @@ $(document).ready(() => {
     $("#btn-edit-confirm").click(e => {
       const {id} = e.target.dataset;
 
-      console.log(id, $('#file-img-edit').val(),)
       const url = host + "/post/updatePost";
       let formData = new FormData();
       formData.append('id', id);
@@ -601,7 +593,6 @@ $(document).ready(() => {
       const { id } = e.target.dataset;
       const url = host + "/post/deletePost";
       let body = { deleteId: id };
-      console.log(body);
       fetch(url, {
         method: "POST",
         headers: {
@@ -630,7 +621,6 @@ $(document).ready(() => {
     function activatedNameClick() {
       $(".auth__name").click((e) => {
         const { id } = e.target.dataset;
-        console.log(id);
         location.search = `?idPost=${id}`;
       });
     }
@@ -638,7 +628,6 @@ $(document).ready(() => {
     $("#btn-load-more").click((e) => {
       pagePost = pagePost + 1;
       if (queryId) {
-        console.log(queryId);
         getPostByIdUser(queryId, false);
       } else {
         getAllPost(false);
@@ -653,7 +642,6 @@ $(document).ready(() => {
     if (location.search !== "") {
     }
     let allDepartment = [];
-    console.log(location);
 
     getAllDepartment().then((res) => {
       if (res.code == 200) {
@@ -688,7 +676,6 @@ $(document).ready(() => {
    */
   if (location.pathname == "/all-notification") {
     let url = host + "/notification/list/notification/";
-    console.log(location);
     let searchUrl = location.search;
     if (searchUrl == "") {
       location.search = "page=1";
@@ -701,24 +688,24 @@ $(document).ready(() => {
     if (pageIndexAllNotify <= 1) {
       $("#btn-pre-list-notification").attr("disabled", true);
     }
-    console.log(pageIndexAllNotify);
+    //console.log(pageIndexAllNotify);
     let allNotify = [];
 
     getNotification(url, pageIndexAllNotify).then((res) => {
       if (res.code == 200) {
         allNotify = res.msg;
-        console.log(res);
+        //console.log(res);
         if (allNotify.length == 0 || allNotify.length < 10) {
           $("#btn-nex-list-notification").attr("disabled", true);
         }
-        console.log(res);
+        //console.log(res);
         updateNotificationList(allNotify);
         activateNotificationCard();
       }
     });
 
     $("#btn-nex-list-notification").click((e) => {
-      console.log("click");
+      //console.log("click");
       if (allNotify.length != 0) {
         pageIndexAllNotify += 1;
         location.search = `page=${pageIndexAllNotify}`;
@@ -786,9 +773,9 @@ $(document).ready(() => {
     $("#btn-nex-list-notification").css("display", "none");
     let allNotify = [];
 
-    console.log(urlDepartment);
+    //console.log(urlDepartment);
     getDepartment(urlDepartment).then((res) => {
-      console.log("hello", res);
+      //console.log("hello", res);
       if (res.code == 200) {
         $("#title-all-notification").html(res.msg.name);
       }
@@ -797,7 +784,7 @@ $(document).ready(() => {
     getNotification(url).then((res) => {
       if (res.code == 200) {
         allNotify = res.msg;
-        console.log(res);
+        //console.log(res);
         updateNotificationList(allNotify);
         activateNotificationCard();
       }
@@ -805,7 +792,7 @@ $(document).ready(() => {
   }
 
   function getDepartment(url) {
-    console.log("run");
+    //console.log("run");
     return fetch(url, {
       method: "GET",
     }).then((data) => data.json());
@@ -821,7 +808,7 @@ $(document).ready(() => {
     getDepartmentNotification().then((res) => {
       if (res.code == 200) {
         allDepartment = res.msg;
-        console.log(allDepartment);
+        //console.log(allDepartment);
         updateSelectDepartment();
         updateSelectedDepartmentNotification();
       }

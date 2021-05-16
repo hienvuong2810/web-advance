@@ -89,7 +89,6 @@ app.get("/list/notification/:page", async(req, res)=>{
 //get specific notification of department
 // id => id of department
 app.get("/list/department/:id",(req, res)=>{
-    console.log('enter department id');
     const {id} = req.params
 
     Notification.find({department: id}, function(err, docs){
@@ -111,7 +110,6 @@ app.get("/list/department/:id",(req, res)=>{
 
 app.get("/specific/department/:id", (req, res) => {
     const {id} = req.params;
-    console.log('hihi', id)
     Department.find({_id: id}, (err, docs) => {
         if(err){
             return res.status(500).json({code: 500, msg: 'Lỗi server'})

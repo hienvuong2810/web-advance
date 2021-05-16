@@ -6,6 +6,7 @@ const session = require('cookie-session')
 const flash = require('connect-flash');
 const app = express()
 const hbs = require('express-handlebars')
+const {dbConnectString} = require('./utils/constants');
 app.use(session({
     resave: true, 
     saveUninitialized: true, 
@@ -52,7 +53,7 @@ app.get("/test", (req, res)=>{
 })
 
 
-mongoose.connect('mongodb://localhost:27017/Web', {
+mongoose.connect(dbConnectString, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,

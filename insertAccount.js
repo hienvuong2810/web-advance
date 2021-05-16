@@ -1,8 +1,9 @@
 const bcrypt = require('bcrypt');
 const Account = require('./src/db/AccountSchema')
+const {dbConnectString} = require('./utils/constants');
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/Web', {
+mongoose.connect(dbConnectString, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,

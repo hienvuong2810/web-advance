@@ -35,7 +35,7 @@ app.get("/", auth, (req, res) => {
 
 app.get("/login", (req, res)=>{
     // let x = req.flash('error')
-    console.log('login',req)
+    //console.log('login',req)
     if(req.user != undefined){
       switch (req.user.role) {
         case 0:
@@ -102,7 +102,6 @@ app.get('/all-department', auth, (req,res) => {
 // , passport.authenticate('local', {failureRedirect: '/login', failureFlash: true}) 
 app.post('/login', authValidation, async (req, res) => {
   const result = validationResult(req);
-  console.log(req)
   if (result.errors.length === 0){
     let {username, password } = req.body
     let query = await Account.findOne({username: username})

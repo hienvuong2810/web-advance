@@ -17,15 +17,14 @@ passport.use(new GoogleStrategy({
   function(accessToken, refreshToken, profile, done) {
     if(profile._json.email.includes("@student.tdtu.edu.vn")){
        Account.findOne({username: profile._json.sub}, function(err, docs){
-
+            console.log("1")
             if(err){
               return done(null, false, {message: "Lỗi server"})
             }
             if(docs){
               return done(null, docs)
             }
-
-            Account.create({displayName: profile._json.name, avatar: profile._json.picture, username: profile._json.sub, role: 0, password: " ", department: "", class: " ", faculty: ""}, function(err, docs){
+            Account.create({displayName: profile._json.name, avatar: profile._json.picture, username: profile._json.sub, role: 0, password: " ", department: null, class: " ", faculty: ""}, function(err, docs){
                 if(!docs){
                   return done(null, false, {message: "Thêm thất bại"})
                 }
