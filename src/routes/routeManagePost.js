@@ -29,7 +29,6 @@ app.post("/createPost",async (req, res)=> {
     Posts.create({
         author :idAuthor,
         content: youtubeUrl ? content + '---youtubebreakurl---' + ytbId : content,
-        createAt: getDate,
         files: arrImage,
         department: "",
         comment:  []
@@ -126,7 +125,7 @@ app.get("/getDetailPost/:id", async (req, res) => {
 //get post with page, default limit = 10
 app.get("/getPost/:page",async (req, res)=>{
     const {page = 1, limit = 10} = req.params
-    let result =  await Post.find({}).sort({createAt: -1}).limit(limit * 1).skip((page - 1) * limit).populate("author").populate({path: "comment", populate: {path: 'author'}})
+    let result =  await Post.find({}).sort({createdAt: -1}).limit(limit * 1).skip((page - 1) * limit).populate("author").populate({path: "comment", populate: {path: 'author'}})
     return res.status(200).json({code: 200, msg: result})
 })
 
@@ -134,7 +133,7 @@ app.get("/getPost/:page",async (req, res)=>{
 //id => id of user
 app.get("/all/:id/:page", async (req, res)=>{
     const {id ,page = 1, limit = 10} = req.params
-    let result =  await Post.find({author: id}).sort({createAt: -1}).limit(limit * 1).skip((page - 1) * limit).populate("author").populate({path: "comment", populate: {path: 'author'}})
+    let result =  await Post.find({author: id}).sort({createdAt: -1}).limit(limit * 1).skip((page - 1) * limit).populate("author").populate({path: "comment", populate: {path: 'author'}})
     return res.status(200).json({code: 200, msg: result})
 })
 
