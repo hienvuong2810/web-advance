@@ -167,7 +167,7 @@ $(document).ready(() => {
       })
         .then((data) => data.json())
         .then((res) => {
-          $(this).attr("disabled", true);
+          $(this).attr("disabled", false);
           if (res.code === 200) {
             notifySuccess(res.msg);
             postModalHide();
