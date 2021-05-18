@@ -17,7 +17,6 @@ app.post("/add", auth, (req, res)=>{
                 department: department,
                 title: title,
                 content: content,
-                createAt: getDate
             }, function (err, docs){
                 if(err){
                     return res.status(500).json({code: 500, msg: "Lỗi server"})
@@ -42,7 +41,6 @@ app.post("/update", (req, res)=>{
             {
                 title: title,
                 content: content,
-                createAt: getDate
             }, function (err, docs){
                 if(err){
                     return res.status(500).json({code: 500, msg: "Lỗi server"})
@@ -81,7 +79,7 @@ app.post("/delete", (req, res)=>{
 //get notification with pagination
 app.get("/list/notification/:page", async(req, res)=>{
     const {page = 1, limit = 10} = req.params;
-    let result = await Notification.find().sort({createAt: -1}).limit(limit * 1).skip((page - 1) * limit).populate('author').populate('department').select(["-__v"]);
+    let result = await Notification.find().sort({createdAt: -1}).limit(limit * 1).skip((page - 1) * limit).populate('author').populate('department').select(["-__v"]);
     return res.status(200).json({code: 200, msg: result})
 })
 
@@ -98,7 +96,7 @@ app.get("/list/department/:id",(req, res)=>{
         else{
             return res.status(200).json({code: 200, msg: docs})
         }
-    }).sort({createAt: -1}).populate('author').populate('department')
+    }).sort({createdAt: -1}).populate('author').populate('department')
     // res.json({tata: 'hello'})
 })
 

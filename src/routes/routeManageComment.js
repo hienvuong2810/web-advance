@@ -6,7 +6,7 @@ const getDate = require("../../utils/date")
 app.post("/add", (req, res)=>{
     const {postId, content} = req.body
     let idAuthor = req?.user?._id ? req.user._id : req.session.user._id
-    Comment.create({author: idAuthor, content: content, createAt: getDate, commentAt: postId}, function(err, docs){
+    Comment.create({author: idAuthor, content: content, commentAt: postId}, function(err, docs){
         if(docs){
             Post.findOneAndUpdate(
                 {

@@ -317,7 +317,7 @@ $(document).ready(() => {
                       <span class="auth__name" data-id="${post.author._id}">${
           post.author.displayName
         }</span>
-                      <span class="auth__date">${post.createAt}</span>
+                      <span class="auth__date">${post.createdAt}</span>
                   </div>
               </div>
               <div class="header__option">
@@ -741,7 +741,7 @@ $(document).ready(() => {
                 <span class="notification-card-title">${n.title}</span>
                 <span class="notification-card-title font-italic text-secondary">From: ${
                   n.author.displayName
-                } | ${n.department.name} | ${n.createAt}</span>
+                } | ${n.department.name} | ${n.createdAt}</span>
                 <span class="notification-card-content" >${
                   n.content.length < 300
                     ? n.content
@@ -943,7 +943,7 @@ $(document).ready(() => {
     const detailDiv = $(`
      <h2>${data.title}</h2>
      <span class="font-italic text-secondary">
-         From: ${data.author.displayName} | ${data.department.name} | ${data.createAt}
+         From: ${data.author.displayName} | ${data.department.name} | ${data.createdAt}
      </span>
      <hr class="mt-04rem">
      <span>
