@@ -6,8 +6,7 @@ const NotifySchema = new Schema({
     department: {type: Schema.Types.ObjectId, ref: 'Department'},
     title: String,
     content: String,
-},{
-    timestamps: true
+    createAt: {type : Date},
 })
 
 let Notification = mongoose.model("Notification", NotifySchema, "Notifications")

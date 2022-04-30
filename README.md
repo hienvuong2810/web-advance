@@ -1,9 +1,3 @@
-# Web advance - Student notify
+db
 
-> mongoDb Atlas: adAdmin dbAdmin123123!@#!@#
-
-## Usage
-
-> demo: https://tdtu-notify.herokuapp.com/
-
-> account admin: admin admin
+adAdmin dbAdmin123123!@#!@#

@@ -10,8 +10,6 @@ const PostSchema = new Schema({
         {type: Schema.Types.ObjectId, ref: 'Comment'}
     ],
     updateAt: {type: Date}
-}, {
-    timestamps: true
 })
 
 let Posts = mongoose.model("Post", PostSchema, "Posts")

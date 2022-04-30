@@ -148,8 +148,7 @@ $(document).ready(() => {
       getAllPost();
     }
 
-    $("#btn-post").click(function(e) {
-      $(this).attr("disabled", true);
+    $("#btn-post").click((e) => {
       const content = $("textarea#post-value").val();
       const youtubeUrl = $("#script-yb").val();
       const url = host + "/post/createPost";
@@ -167,7 +166,6 @@ $(document).ready(() => {
       })
         .then((data) => data.json())
         .then((res) => {
-          $(this).attr("disabled", true);
           if (res.code === 200) {
             notifySuccess(res.msg);
             postModalHide();
@@ -317,7 +315,7 @@ $(document).ready(() => {
                       <span class="auth__name" data-id="${post.author._id}">${
           post.author.displayName
         }</span>
-                      <span class="auth__date">${post.createdAt}</span>
+                      <span class="auth__date">${post.createAt}</span>
                   </div>
               </div>
               <div class="header__option">
@@ -389,14 +387,12 @@ $(document).ready(() => {
     }
 
     function activatedCommentPost() {
-      $(".btn-comment").click(function(e) {
+      $(".btn-comment").click((e) => {
         const { id } = e.target.dataset;
         let commentValue = $(`#comment-value-${id}`).val();
 
         if (commentValue.trim() !== "") {
-          $(this).attr("disabled", true);
           postCommentPost(id, commentValue).then((res) => {
-            $(this).attr("disabled", false);
             if (res.code == 200) {
               notifySuccess(res.msg);
               updateOnlyCommentElement(res.data);
@@ -470,18 +466,19 @@ $(document).ready(() => {
 
     $("#btn-confirm-delete-comment").click((e) => {
       const { id, idpost } = e.target.dataset;
-
+     
       deleteCommentPost(id).then((res) => {
         if (res.code == 200) {
-          let totalComment = $(`#total-comment-${idpost}`).text().split(" ");
-          totalComment[0] = totalComment[0] * 1 - 1;
-          if (totalComment[0] <= 1) {
-            totalComment[1] = "comment";
-          } else {
-            totalComment[1] = "comments";
+
+          let totalComment = $(`#total-comment-${idpost}`).text().split(' ');
+          totalComment[0] = totalComment[0]*1 - 1;
+          if(totalComment[0] <= 1){
+            totalComment[1] = 'comment'
+          }else{
+            totalComment[1] = 'comments'
           }
-          let newTotal = totalComment.join(" ");
-          $(`#total-comment-${idpost}`).text(newTotal);
+          let newTotal = totalComment.join(' ');
+          $(`#total-comment-${idpost}`).text(newTotal)
           notifySuccess(res.msg);
           $(`#user-comment-${id}`).remove();
           $("#confirmDeleteCommentModal").modal("hide");
@@ -507,50 +504,49 @@ $(document).ready(() => {
       }).then((data) => data.json());
     }
 
-    function activatedEditPost() {
-      $(".edit-post").click((e) => {
-        const { id } = e.target.dataset;
-        $("#post-value-edit").val("");
-        $("#file-img-edit").val("");
-        $("#script-yb-edit").val("");
-        getDetailPostById(id).then((res) => {
-          if (res.code == 200) {
-            if (res.msg.content.includes("---youtubebreakurl---")) {
-              let contentArr = res.msg.content.split("---youtubebreakurl---");
-              $("#file-img-edit").hide();
-              $("#sub-body-edit-post-title").html("YouTube video link:");
-              $("#post-value-edit").val(contentArr[0]);
-              $("#script-yb-edit").show();
-              $("#script-yb-edit").val(contentArr[1]);
-            } else if (res.msg.files.length !== 0) {
-              $("#script-yb-edit").hide();
-              $("#file-img-edit").show();
-              $("#sub-body-edit-post-title").html("Img file:");
-              $("#post-value-edit").val(res.msg.content);
-              $("#img-edit-post").attr(
-                "src",
-                `${host}/images/${res.msg.files[0]}`
-              );
-            } else {
-              $("#post-value-edit").val(res.msg.content);
+    function activatedEditPost(){
+      $('.edit-post').click(e => {
+        const {id} = e.target.dataset;
+        $('#post-value-edit').val('')
+        $('#file-img-edit').val('')
+        $('#script-yb-edit').val('')
+        getDetailPostById(id)
+        .then(res => {
+          if(res.code == 200){
+            if(res.msg.content.includes('---youtubebreakurl---')){
+              let contentArr = res.msg.content.split('---youtubebreakurl---');
+              $('#file-img-edit').hide()
+              $('#sub-body-edit-post-title').html('YouTube video link:')
+              $('#post-value-edit').val(contentArr[0])
+              $('#script-yb-edit').show()
+              $('#script-yb-edit').val(contentArr[1])
+            }else if(res.msg.files.length !== 0){
+              $('#script-yb-edit').hide();
+              $('#file-img-edit').show();
+              $('#sub-body-edit-post-title').html('Img file:');
+              $('#post-value-edit').val(res.msg.content)
+              $('#img-edit-post').attr('src', `${host}/images/${res.msg.files[0]}`);
+            }else{
+              $('#post-value-edit').val(res.msg.content)
             }
             $("#editPostModal").modal("show");
             $("#btn-edit-confirm").attr("data-id", id);
-          } else {
+
+          }else{
             notifyError(res.msg);
           }
-        });
-      });
+        })
+      })
     }
 
-    $("#btn-edit-confirm").click((e) => {
-      const { id } = e.target.dataset;
+    $("#btn-edit-confirm").click(e => {
+      const {id} = e.target.dataset;
 
       const url = host + "/post/updatePost";
       let formData = new FormData();
-      formData.append("id", id);
-      formData.append("content", $("#post-value-edit").val());
-      formData.append("youtubeUrl", $("#script-yb-edit").val());
+      formData.append('id', id);
+      formData.append("content", $('#post-value-edit').val());
+      formData.append("youtubeUrl", $('#script-yb-edit').val());
       let file = $("#file-img-edit")[0].files;
       for (let i = 0; i < file.length; i++) {
         formData.append("image", file[i]);
@@ -564,10 +560,11 @@ $(document).ready(() => {
           if (res.code === 200) {
             notifySuccess(res.msg);
             editPostModalHide();
-            $("#script-yb-edit").val("");
-            $("#file-img-edit").val("");
+            $('#script-yb-edit').val('')
+            $("#file-img-edit").val('')
             if (queryId) {
               getPostByIdUser(queryId);
+              
             } else {
               getAllPost();
             }
@@ -576,13 +573,13 @@ $(document).ready(() => {
             editPostModalHide();
           }
         });
-    });
+    })
 
-    function getDetailPostById(id) {
-      const url = host + "/post/getDetailPost/" + id;
+    function getDetailPostById(id){
+      const url = host + '/post/getDetailPost/' + id;
       return fetch(url, {
-        method: "GET",
-      }).then((data) => data.json());
+        method: 'GET'
+      }).then(data => data.json())
     }
 
     function activatedDeletePost() {
@@ -741,7 +738,7 @@ $(document).ready(() => {
                 <span class="notification-card-title">${n.title}</span>
                 <span class="notification-card-title font-italic text-secondary">From: ${
                   n.author.displayName
-                } | ${n.department.name} | ${n.createdAt}</span>
+                } | ${n.department.name} | ${n.createAt}</span>
                 <span class="notification-card-content" >${
                   n.content.length < 300
                     ? n.content
@@ -943,7 +940,7 @@ $(document).ready(() => {
     const detailDiv = $(`
      <h2>${data.title}</h2>
      <span class="font-italic text-secondary">
-         From: ${data.author.displayName} | ${data.department.name} | ${data.createdAt}
+         From: ${data.author.displayName} | ${data.department.name} | ${data.createAt}
      </span>
      <hr class="mt-04rem">
      <span>

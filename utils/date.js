@@ -2,6 +2,7 @@
 const moment = require('moment');
 
 function getDate(){
+    moment().local();
     // const dateVietnam = moment.tz(Date.now(), "Asia/Saigon");
     // const newDate = new moment().utc(new Date)
     // return moment.utc(Date.now());
